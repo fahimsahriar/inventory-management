@@ -1,0 +1,72 @@
+2023-12-22 11:17:41 notice: If you cannot use automatic connection management, use $connection->getDriver()->connect() instead.
+C:\Users\user\Desktop\updated_cms\templates\Pages\home.php, line: 30
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `templates/Pages/home.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Core\functions.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Core\functions.php, line 318
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Database\Connection.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Database\Connection.php, line 322
+Cake\Database\Connection->connect() C:\Users\user\Desktop\updated_cms\templates\Pages\home.php, line 30
+Cake\View\View->{closure}() C:\Users\user\Desktop\updated_cms\templates\Pages\home.php, line 167
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php, line 1222
+Cake\View\View->_evaluate() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php, line 1179
+Cake\View\View->_render() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php, line 810
+Cake\View\View->render() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php, line 790
+Cake\Controller\Controller->render() C:\Users\user\Desktop\updated_cms\src\Controller\PagesController.php, line 65
+App\Controller\PagesController->display() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php, line 560
+Cake\Controller\Controller->invokeAction() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 140
+Cake\Controller\ControllerFactory->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 115
+Cake\Controller\ControllerFactory->invoke() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 325
+Cake\Http\BaseApplication->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php, line 176
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 189
+Cake\Routing\Middleware\RoutingMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 68
+Cake\Routing\Middleware\AssetMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 60
+DebugKit\Middleware\DebugKitMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 67
+Cake\Http\Runner->run() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 99
+Cake\Http\Server->run() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-22 11:18:09 notice: If you cannot use automatic connection management, use $connection->getDriver()->connect() instead.
+C:\Users\user\Desktop\updated_cms\templates\Pages\home.php, line: 30
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `templates/Pages/home.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Core\functions.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Core\functions.php, line 318
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Database\Connection.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Database\Connection.php, line 322
+Cake\Database\Connection->connect() C:\Users\user\Desktop\updated_cms\templates\Pages\home.php, line 30
+Cake\View\View->{closure}() C:\Users\user\Desktop\updated_cms\templates\Pages\home.php, line 167
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php, line 1222
+Cake\View\View->_evaluate() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php, line 1179
+Cake\View\View->_render() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php, line 810
+Cake\View\View->render() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php, line 790
+Cake\Controller\Controller->render() C:\Users\user\Desktop\updated_cms\src\Controller\PagesController.php, line 65
+App\Controller\PagesController->display() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php, line 560
+Cake\Controller\Controller->invokeAction() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 140
+Cake\Controller\ControllerFactory->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 115
+Cake\Controller\ControllerFactory->invoke() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 325
+Cake\Http\BaseApplication->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php, line 176
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 189
+Cake\Routing\Middleware\RoutingMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 68
+Cake\Routing\Middleware\AssetMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 60
+DebugKit\Middleware\DebugKitMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 67
+Cake\Http\Runner->run() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 99
+Cake\Http\Server->run() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
