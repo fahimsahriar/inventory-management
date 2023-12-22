@@ -135,3 +135,63 @@ Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakep
 Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
 [main]
 
+2023-12-22 11:59:53 error: [Cake\Http\Exception\MissingControllerException] Controller class Login could not be found. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 338
+Exception Attributes: array (
+  'controller' => 'Login',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+  'class' => 'Login',
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:75
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:320
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /login
+2023-12-22 11:59:54 error: [Cake\Http\Exception\MissingControllerException] Controller class Login could not be found. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 338
+Exception Attributes: array (
+  'controller' => 'Login',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+  'class' => 'Login',
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:75
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:320
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /login
