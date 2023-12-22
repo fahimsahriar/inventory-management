@@ -38,6 +38,11 @@ class UsersController extends AppController
             }
         }
     }
+    public function logout()
+    {
+        $this->Flash->success("Log out successfull");
+        return $this->redirect($this->Auth->logout());
+    }
     //user add and registration
     public function add()
     {

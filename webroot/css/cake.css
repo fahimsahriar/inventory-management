@@ -222,3 +222,17 @@ th {
         content: " \2190";
     }
 }
+.heading{
+    text-align:center;
+}
+.landing_page_buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.inner_button{
+    display: flex;
+    gap: 20px;
+}

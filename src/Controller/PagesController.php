@@ -31,18 +31,19 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
-    /**
-     * Displays a view
-     *
-     * @param string ...$path Path segments.
-     * @return \Cake\Http\Response|null
-     * @throws \Cake\Http\Exception\ForbiddenException When a directory traversal attempt.
-     * @throws \Cake\View\Exception\MissingTemplateException When the view file could not
-     *   be found and in debug mode.
-     * @throws \Cake\Http\Exception\NotFoundException When the view file could not
-     *   be found and not in debug mode.
-     * @throws \Cake\View\Exception\MissingTemplateException In debug mode.
-     */
+    public function initialize(): void
+    {
+        parent::initialize();
+        
+    }
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        // Allow users to register and logout.
+        // You should not add the login action to allow as you would end up with users being able
+        // to login multiple times and you would not know which user you had logged in as.
+        $this->Auth->allow(['display']);
+    }
     public function display(string ...$path): ?Response
     {
         if (!$path) {

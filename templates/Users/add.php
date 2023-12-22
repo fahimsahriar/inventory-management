@@ -6,7 +6,13 @@ $loggedInUser = $this->request->getSession()->read('Auth');
 <div class="row">
     <div class="column-responsive mb-4">
         <div class="form content">
-            <?= $this->Html->link(__('Back'), ['action' => 'index'], ['class' => 'button float-right']) ?>
+            <?php
+                if($loggedInUser){
+                    echo $this->Html->link(__('Back'), ['action' => 'index'], ['class' => 'button float-right']);
+                }else{
+                    echo $this->Html->link(__('Back'), ['controller' => 'Pages','action' => 'display'], ['class' => 'button float-right']);
+                }
+            ?>
             <?= $this->Form->create($user) ?>
             <fieldset>
                 <legend><?= __('Add User') ?></legend>
