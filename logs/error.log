@@ -226,3 +226,34 @@ Stack Trace:
 
 Request URL: /users/logout
 Referer URL: http://localhost:8765/
+2023-12-22 12:17:58 error: [Cake\Network\Exception\SocketException]  in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Network\Socket.php on line 170
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Mailer\Transport\SmtpTransport.php:292
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Mailer\Transport\SmtpTransport.php:200
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Mailer\Transport\DebugKitTransport.php:78
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Mailer\Mailer.php:407
+- C:\Users\user\Desktop\updated_cms\src\Controller\UsersController.php:152
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:162
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /users/recover
+Referer URL: http://localhost:8765/users/recover
