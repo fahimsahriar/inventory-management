@@ -70,3 +70,31 @@ Cake\Http\Runner->run() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp
 Cake\Http\Server->run() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
 [main]
 
+2023-12-22 11:40:03 notice: Undefined property: UsersController::$Auth in C:\Users\user\Desktop\updated_cms\src\Controller\UsersController.php on line 27
+Request URL: /users
+Referer URL: http://localhost:8765/users
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php, line 342
+Cake\Controller\Controller->__get() C:\Users\user\Desktop\updated_cms\src\Controller\UsersController.php, line 27
+App\Controller\UsersController->add() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php, line 560
+Cake\Controller\Controller->invokeAction() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 140
+Cake\Controller\ControllerFactory->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 115
+Cake\Controller\ControllerFactory->invoke() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 325
+Cake\Http\BaseApplication->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php, line 176
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 162
+Cake\Http\Middleware\BodyParserMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 189
+Cake\Routing\Middleware\RoutingMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 68
+Cake\Routing\Middleware\AssetMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 60
+DebugKit\Middleware\DebugKitMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 67
+Cake\Http\Runner->run() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 99
+Cake\Http\Server->run() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+

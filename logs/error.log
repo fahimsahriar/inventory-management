@@ -1,0 +1,137 @@
+2023-12-22 11:35:04 error: [Cake\Controller\Exception\MissingActionException] Action UsersController::index() could not be found, or is not accessible. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php on line 539
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'index',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:135
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /users/
+2023-12-22 11:35:33 error: [Cake\Http\Exception\InvalidCsrfTokenException] Missing or invalid CSRF cookie. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php on line 396
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:172
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:162
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /users/add
+Referer URL: http://localhost:8765/users/add
+2023-12-22 11:37:18 error: [Cake\Http\Exception\InvalidCsrfTokenException] CSRF token from either the request body or request headers did not match or is missing. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php on line 419
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:172
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:162
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /users/add
+Referer URL: http://localhost:8765/users/add
+2023-12-22 11:40:03 error: [Error] Call to a member function user() on null in C:\Users\user\Desktop\updated_cms\src\Controller\UsersController.php on line 27
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:162
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /users
+Referer URL: http://localhost:8765/users
+2023-12-22 11:40:03 warning: Unable to emit headers. Headers sent in file=C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /users
+Referer URL: http://localhost:8765/users
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 71
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-22 11:40:03 warning: Cannot modify header information - headers already sent by (output started at C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users
+Referer URL: http://localhost:8765/users
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 164
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 74
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-22 11:40:03 warning: Cannot modify header information - headers already sent by (output started at C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users
+Referer URL: http://localhost:8765/users
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 197
+Cake\Http\ResponseEmitter->emitHeaders() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 75
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-22 11:40:03 warning: Cannot modify header information - headers already sent by (output started at C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users
+Referer URL: http://localhost:8765/users
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 197
+Cake\Http\ResponseEmitter->emitHeaders() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 75
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
