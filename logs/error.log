@@ -226,3 +226,34 @@ Stack Trace:
 
 Request URL: /users/logout
 Referer URL: http://localhost:8765/
+2023-12-25 09:49:24 error: [Cake\Controller\Exception\MissingActionException] Action UsersController::recover() could not be found, or is not accessible. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php on line 539
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'recover',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:135
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /users/recover
+Referer URL: http://localhost:8765/users/login
