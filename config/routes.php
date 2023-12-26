@@ -57,6 +57,7 @@ return function (RouteBuilder $routes): void {
          */
         $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'landing']);
         $builder->connect('/users', ['controller' => 'Users', 'action' => 'index']);
+        $builder->connect('/categories', ['controller' => 'Categories', 'action' => 'index']);
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
