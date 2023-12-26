@@ -9,6 +9,20 @@ $loggedInUser = $this->request->getSession()->read('Auth');
                 'controller' => 'Users',
                 'action' => 'index',
             ]) ?>">user list</a> </h2>
+            <div class="inner_button">
+                <a class="button" href="<?= $this->Url->build([
+                    'controller' => 'Users',
+                    'action' => 'index',
+                ]) ?>">Userlist</a>
+                <a class="button" href="<?= $this->Url->build([
+                    'controller' => 'Products',
+                    'action' => 'index',
+                ]) ?>">Product List</a>
+                <a class="button" href="<?= $this->Url->build([
+                    'controller' => 'Categories',
+                    'action' => 'index',
+                ]) ?>">Category List</a>
+            </div>
         <?php
         }else{ ?>
             <h2 class="heading">Welcome to user management</h2>
