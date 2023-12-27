@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use Cake\Core\Configure;
 
 class CategoriesController extends AppController
 {
@@ -12,19 +11,17 @@ class CategoriesController extends AppController
         parent::initialize();
         $this->loadModel("Categories");
     }
-    public function beforeFilter(\Cake\Event\EventInterface $event)
-    {
-        parent::beforeFilter($event);
-        // $this->Auth->allow(['add', "recover", "resetpassword", 'verification']);
-    }
-    //user add and registration
+    //user categories
     public function add()
     {
         $category = $this->Categories->newEmptyEntity();
         if ($this->request->is('post')) {
             $categorydata = $this->request->getData();
-            // $loggedInUser = $this->request->getSession()->read('Auth');
             $category = $this->Categories->patchEntity($category, $categorydata);
+
+            $loggedInUser = $this->request->getSession()->read('Auth');
+            $category['userid'] = $loggedInUser['User']['id'];
+
             if ($this->Categories->save($category)) {
                 $this->Flash->success(__('The user has been saved.'));
 
@@ -37,8 +34,9 @@ class CategoriesController extends AppController
     //list view
     public function index()
     {
+        $loggedInUser = $this->request->getSession()->read('Auth');
         $query = $this->Categories->find('all', [
-            'conditions' => ['deleted' => 0],
+            'conditions' => ['deleted' => 0, 'userid' => $loggedInUser['User']['id']],
         ]);
         $categories = $this->paginate($query, [
             'limit' => 6,
@@ -50,15 +48,17 @@ class CategoriesController extends AppController
     }
     public function edit($id = null)
     {
-        $userData = $this->Auth->user();
-        if($userData['role']== Configure::read('admin'))
-        {
-            $this->Flash->error(__('You are not able to edit'));
-            return $this->redirect(['action' => 'index']);
-        }
         $category = $this->Categories->get($id, [
             'contain' => [],
         ]);
+
+        //user varification
+        $loggedInUser = $this->request->getSession()->read('Auth');
+        if($loggedInUser['User']['id'] != $category['userid']){
+            $this->Flash->error(__('You are not permited to edit'));
+            return $this->redirect(['action' => 'index']);
+        }
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $category = $this->Categories->patchEntity($category, $this->request->getData());
             if ($this->Categories->save($category)) {
@@ -73,12 +73,16 @@ class CategoriesController extends AppController
     public function delete($id = null)
     {
         $this->autoRender = false;
-        $userData = $this->Auth->user();
-        if($userData['role']==0)
-        {
-            $this->Flash->error(__('You are not able to edit'));
+        $category = $this->Categories->get($id, [
+            'contain' => [],
+        ]);
+        //user varification
+        $loggedInUser = $this->request->getSession()->read('Auth');
+        if($loggedInUser['User']['id'] != $category['userid']){
+            $this->Flash->error(__('You are not permited to edit'));
             return $this->redirect(['action' => 'index']);
         }
+        
         $this->request->allowMethod(['post', 'delete']);
         $category = $this->Categories->get($id);
         $category->deleted = 1;

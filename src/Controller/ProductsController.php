@@ -16,17 +16,26 @@ class ProductsController extends AppController
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
         parent::beforeFilter($event);
-        // $this->Auth->allow(['add', "recover", "resetpassword", 'verification']);
     }
-    //user add and registration
+    //add product
     public function add()
     {
-        $categories = $this->Categories->find('list')->where(['deleted' => 0]);
+        //category selection based on user
+        $loggedInUser = $this->request->getSession()->read('Auth');
+        $categories = $this->Products->Categories->find('list',[
+            'conditions' => ['deleted' => 0, 'userid' => $loggedInUser['User']['id']],
+        ]);
         $this->set(compact('categories'));
+
         $product = $this->Products->newEmptyEntity();
         if ($this->request->is('post')) {
+
             $productdata = $this->request->getData();
             $product = $this->Products->patchEntity($product, $productdata);
+
+            $loggedInUser = $this->request->getSession()->read('Auth');
+            $product['userid'] = $loggedInUser['User']['id'];
+
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
 
@@ -39,9 +48,10 @@ class ProductsController extends AppController
     //list view
     public function index()
     {
+        $loggedInUser = $this->request->getSession()->read('Auth');
         $query = $this->Products->find('all', [
             'contain' => ['Categories'],
-            'conditions' => ['Products.deleted' => 0],
+            'conditions' => ['Products.deleted' => 0, 'Products.userid' => $loggedInUser['User']['id']],
         ]);
         
         $products = $this->paginate($query, [
@@ -49,7 +59,7 @@ class ProductsController extends AppController
         ]);
 
         $this->set(compact('products'));
-        $userData = $this->Auth->user();
+        $userData =  $loggedInUser['User'];
         $this->set(compact('userData'));
     }
     //single user view
@@ -63,17 +73,23 @@ class ProductsController extends AppController
     }
     public function edit($id = null)
     {
-        $categories = $this->Products->Categories->find('list')->where(['deleted' => 0]);
+        $loggedInUser = $this->request->getSession()->read('Auth');
+        $categories = $this->Products->Categories->find('list',[
+            'conditions' => ['deleted' => 0, 'userid' => $loggedInUser['User']['id']],
+        ]);
         $this->set(compact('categories'));
-        $userData = $this->Auth->user();
-        // if($userData['role']== Configure::read('admin'))
-        // {
-        //     $this->Flash->error(__('You are not able to edit'));
-        //     return $this->redirect(['action' => 'index']);
-        // }
+
         $product = $this->Products->get($id, [
             'contain' => ['Categories'],
         ]);
+
+        //user varification
+        $loggedInUser = $this->request->getSession()->read('Auth');
+        if($loggedInUser['User']['id'] != $product['userid']){
+            $this->Flash->error(__('You are not permited to edit'));
+            return $this->redirect(['action' => 'index']);
+        }
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
             if ($this->Products->save($product)) {
@@ -88,12 +104,17 @@ class ProductsController extends AppController
     public function delete($id = null)
     {
         $this->autoRender = false;
-        $userData = $this->Auth->user();
-        if($userData['role']==0)
-        {
-            $this->Flash->error(__('You are not able to edit'));
+        
+        //user varification
+        $product = $this->Products->get($id, [
+            'contain' => ['Categories'],
+        ]);
+        $loggedInUser = $this->request->getSession()->read('Auth');
+        if($loggedInUser['User']['id'] != $product['userid']){
+            $this->Flash->error(__('You are not permited to edit'));
             return $this->redirect(['action' => 'index']);
         }
+
         $this->request->allowMethod(['post', 'delete']);
         $product = $this->Products->get($id);
         $product->deleted = 1;

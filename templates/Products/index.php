@@ -31,14 +31,8 @@ use Cake\Core\Configure;
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $product->id]) ?>
                             <?php
-                            if ($userData['role'] == Configure::read('super_admin')) {
                                 echo $this->Html->link(__('Edit'), ['action' => 'edit', $product->id]);
-                            }
-                            ?>
-                            <?php
-                            if ($userData['role'] == Configure::read('super_admin')) {
                                 echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $product->id], ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]);
-                            }
                             ?>
                         </td>
                     </tr>

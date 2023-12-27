@@ -1,5 +1,4 @@
 <?php
-use Cake\Core\Configure;
 $this->Flash->render();
 $loggedInUser = $this->request->getSession()->read('Auth');
 ?>

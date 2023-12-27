@@ -12,5 +12,6 @@ class Product extends Entity
         'quantity' => true,
         'status' => true,
         'deleted' => true,
+        'userid' => true,
     ];
 }

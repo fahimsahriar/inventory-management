@@ -24,14 +24,8 @@ use Cake\Core\Configure;
                         <td><?= h($category->status) ?></td>
                         <td class="actions">
                             <?php
-                            if ($userData['role'] == Configure::read('super_admin')) {
                                 echo $this->Html->link(__('Edit'), ['action' => 'edit', $category->id]);
-                            }
-                            ?>
-                            <?php
-                            if ($userData['role'] == Configure::read('super_admin')) {
                                 echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $category->id], ['confirm' => __('Are you sure you want to delete # {0}?', $category->id)]);
-                            }
                             ?>
                         </td>
                     </tr>
