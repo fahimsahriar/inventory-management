@@ -17,6 +17,26 @@ class UsersController extends AppController
     public function initialize(): void
     {
         parent::initialize();
+        $this->loadModel("Users");
+    }
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['add', "recover", "resetpassword", 'verification']);
+    }
+    public function login()
+    {
+        if ($this->request->is("post")) {
+            $userData = $this->Auth->identify($this->request->getData());
+            if ($userData) {
+                $this->Flash->success("Logged in");
+                $this->Auth->setUser($userData);
+                $this->set(compact('userData'));
+                return $this->redirect($this->Auth->redirectUrl());
+            } else {
+                $this->Flash->error("Invalid Login");
+            }
+        }
     }
     //user add and registration
     public function add()
