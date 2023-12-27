@@ -32,6 +32,14 @@ $loggedInUser = $this->request->getSession()->read('Auth');
         <div class="top-nav-links">
             <?php
             if ($loggedInUser) {
+            ?>
+                <a href=""><i class="fa-regular fa-bell"></i></a>
+                <?php 
+                if (isset($headerData)) {
+                    echo count($headerData);
+                }
+                ?>
+            <?php
                 echo $this->Html->link(__('Logout'), ['controller' => 'users', 'action' => 'logout']);
             } else {
                 echo $this->Html->link(__('Login'), ['controller' => 'users', 'action' => 'login']);
@@ -48,5 +56,5 @@ $loggedInUser = $this->request->getSession()->read('Auth');
     <footer>
     </footer>
 </body>
-
+<script src="https://kit.fontawesome.com/5a02838b79.js" crossorigin="anonymous"></script>
 </html>

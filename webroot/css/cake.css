@@ -243,3 +243,9 @@ th {
     display: flex;
     gap: 20px;
 }
+.top-nav-links{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}

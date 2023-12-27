@@ -4234,3 +4234,680 @@ Cake\Http\Runner->run() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp
 Cake\Http\Server->run() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
 [main]
 
+2023-12-27 16:35:25 error: [Cake\View\Exception\MissingHelperException] Helper class HeaderDataHelper could not be found. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 133
+Exception Attributes: array (
+  'class' => 'HeaderDataHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php:103
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:1280
+- C:\Users\user\Desktop\updated_cms\src\View\AppView.php:40
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:361
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewBuilder.php:604
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewVarsTrait.php:71
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:788
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:569
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /products
+Referer URL: http://localhost:8765/
+2023-12-27 16:36:06 error: [Cake\View\Exception\MissingHelperException] Helper class HeaderDataHelper could not be found. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 133
+Exception Attributes: array (
+  'class' => 'HeaderDataHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php:103
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:1280
+- C:\Users\user\Desktop\updated_cms\src\View\AppView.php:40
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:361
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewBuilder.php:604
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewVarsTrait.php:71
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:788
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:569
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /products
+Referer URL: http://localhost:8765/
+2023-12-27 16:36:16 error: [Cake\View\Exception\MissingHelperException] Helper class HeaderDataHelper could not be found. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 133
+Exception Attributes: array (
+  'class' => 'HeaderDataHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php:103
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:1280
+- C:\Users\user\Desktop\updated_cms\src\View\AppView.php:40
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:361
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewBuilder.php:604
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewVarsTrait.php:71
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:788
+- C:\Users\user\Desktop\updated_cms\src\Controller\PagesController.php:66
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /
+2023-12-27 16:38:52 error: [Cake\View\Exception\MissingHelperException] Helper class HeaderDataHelper could not be found. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 133
+Exception Attributes: array (
+  'class' => 'HeaderDataHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php:103
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:1280
+- C:\Users\user\Desktop\updated_cms\src\View\AppView.php:40
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:361
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewBuilder.php:604
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewVarsTrait.php:71
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:788
+- C:\Users\user\Desktop\updated_cms\src\Controller\PagesController.php:66
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /
+2023-12-27 16:39:21 error: [Cake\View\Exception\MissingHelperException] Helper class HeaderDataComponentHelper could not be found. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 133
+Exception Attributes: array (
+  'class' => 'HeaderDataComponentHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php:103
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:1280
+- C:\Users\user\Desktop\updated_cms\src\View\AppView.php:40
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:361
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewBuilder.php:604
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewVarsTrait.php:71
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:788
+- C:\Users\user\Desktop\updated_cms\src\Controller\PagesController.php:66
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /
+2023-12-27 16:40:28 error: [Cake\View\Exception\MissingHelperException] Helper class HeaderDataComponentHelper could not be found. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 133
+Exception Attributes: array (
+  'class' => 'HeaderDataComponentHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php:103
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:1280
+- C:\Users\user\Desktop\updated_cms\src\View\AppView.php:40
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:361
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewBuilder.php:604
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewVarsTrait.php:71
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:788
+- C:\Users\user\Desktop\updated_cms\src\Controller\PagesController.php:66
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /
+2023-12-27 16:44:09 error: [Cake\View\Exception\MissingHelperException] Helper class HeaderDataComponentHelper could not be found. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 133
+Exception Attributes: array (
+  'class' => 'HeaderDataComponentHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php:103
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:1280
+- C:\Users\user\Desktop\updated_cms\src\View\AppView.php:40
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:361
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewBuilder.php:604
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewVarsTrait.php:71
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:788
+- C:\Users\user\Desktop\updated_cms\src\Controller\PagesController.php:66
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /
+2023-12-27 16:46:27 error: [Cake\View\Exception\MissingHelperException] Helper class HeaderDataComponentHelper could not be found. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 133
+Exception Attributes: array (
+  'class' => 'HeaderDataComponentHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php:103
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:1280
+- C:\Users\user\Desktop\updated_cms\src\View\AppView.php:40
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:361
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewBuilder.php:604
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewVarsTrait.php:71
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:788
+- C:\Users\user\Desktop\updated_cms\src\Controller\PagesController.php:66
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /
+2023-12-27 16:46:28 warning: Unable to emit headers. Headers sent in file=C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 71
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-27 16:46:28 warning: Cannot modify header information - headers already sent by (output started at C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 164
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 74
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-27 16:46:28 warning: Cannot modify header information - headers already sent by (output started at C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 197
+Cake\Http\ResponseEmitter->emitHeaders() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 75
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-27 16:46:28 warning: Cannot modify header information - headers already sent by (output started at C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 197
+Cake\Http\ResponseEmitter->emitHeaders() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 75
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-27 16:50:59 error: [Cake\View\Exception\MissingHelperException] Helper class HeaderDataComponentHelper could not be found. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 133
+Exception Attributes: array (
+  'class' => 'HeaderDataComponentHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php:103
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:1280
+- C:\Users\user\Desktop\updated_cms\src\View\AppView.php:40
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:361
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewBuilder.php:604
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewVarsTrait.php:71
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:788
+- C:\Users\user\Desktop\updated_cms\src\Controller\PagesController.php:66
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /
+2023-12-27 16:51:31 error: [Cake\View\Exception\MissingHelperException] Helper class HeaderDataComponentHelper could not be found. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 133
+Exception Attributes: array (
+  'class' => 'HeaderDataComponentHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php:103
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:1280
+- C:\Users\user\Desktop\updated_cms\src\View\AppView.php:40
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:361
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewBuilder.php:604
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewVarsTrait.php:71
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:788
+- C:\Users\user\Desktop\updated_cms\src\Controller\PagesController.php:66
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /
+2023-12-27 16:51:43 error: [Cake\View\Exception\MissingHelperException] Helper class HeaderDataComponentHelper could not be found. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 133
+Exception Attributes: array (
+  'class' => 'HeaderDataComponentHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php:103
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:1280
+- C:\Users\user\Desktop\updated_cms\src\View\AppView.php:40
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:361
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewBuilder.php:604
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewVarsTrait.php:71
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:788
+- C:\Users\user\Desktop\updated_cms\src\Controller\PagesController.php:66
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /
+2023-12-27 16:52:08 error: [Cake\View\Exception\MissingHelperException] Helper class HeaderDataComponentHelper could not be found. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 133
+Exception Attributes: array (
+  'class' => 'HeaderDataComponentHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php:103
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:1280
+- C:\Users\user\Desktop\updated_cms\src\View\AppView.php:40
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php:361
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewBuilder.php:604
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\ViewVarsTrait.php:71
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:788
+- C:\Users\user\Desktop\updated_cms\src\Controller\PagesController.php:66
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /
+2023-12-27 16:57:51 error: [Error] Call to a member function getSession() on null in C:\Users\user\Desktop\updated_cms\src\Controller\Component\HeaderDataComponent.php on line 11
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\src\Controller\AppController.php:76
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Event\EventManager.php:309
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Event\EventManager.php:286
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Event\EventDispatcherTrait.php:92
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:776
+- C:\Users\user\Desktop\updated_cms\src\Controller\PagesController.php:66
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /
+2023-12-27 16:57:51 warning: Unable to emit headers. Headers sent in file=C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 71
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-27 16:57:51 warning: Cannot modify header information - headers already sent by (output started at C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 164
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 74
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-27 16:57:51 warning: Cannot modify header information - headers already sent by (output started at C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 197
+Cake\Http\ResponseEmitter->emitHeaders() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 75
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-27 16:57:51 warning: Cannot modify header information - headers already sent by (output started at C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 197
+Cake\Http\ResponseEmitter->emitHeaders() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 75
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-27 16:58:29 error: [Error] Call to a member function getSession() on null in C:\Users\user\Desktop\updated_cms\src\Controller\Component\HeaderDataComponent.php on line 11
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\src\Controller\AppController.php:76
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Event\EventManager.php:309
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Event\EventManager.php:286
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Event\EventDispatcherTrait.php:92
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:776
+- C:\Users\user\Desktop\updated_cms\src\Controller\PagesController.php:66
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /
+2023-12-27 16:58:29 warning: Unable to emit headers. Headers sent in file=C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 71
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-27 16:58:29 warning: Cannot modify header information - headers already sent by (output started at C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 164
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 74
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-27 16:58:29 warning: Cannot modify header information - headers already sent by (output started at C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 197
+Cake\Http\ResponseEmitter->emitHeaders() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 75
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-27 16:58:29 warning: Cannot modify header information - headers already sent by (output started at C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 197
+Cake\Http\ResponseEmitter->emitHeaders() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 75
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-27 17:00:42 error: [Error] Call to a member function user() on null in C:\Users\user\Desktop\updated_cms\src\Controller\Component\HeaderDataComponent.php on line 11
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\src\Controller\AppController.php:76
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Event\EventManager.php:309
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Event\EventManager.php:286
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Event\EventDispatcherTrait.php:92
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:776
+- C:\Users\user\Desktop\updated_cms\src\Controller\PagesController.php:66
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /
+2023-12-27 17:00:43 warning: Unable to emit headers. Headers sent in file=C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 71
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-27 17:00:43 warning: Cannot modify header information - headers already sent by (output started at C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 164
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 74
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-27 17:00:43 warning: Cannot modify header information - headers already sent by (output started at C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 197
+Cake\Http\ResponseEmitter->emitHeaders() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 75
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-27 17:00:43 warning: Cannot modify header information - headers already sent by (output started at C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 197
+Cake\Http\ResponseEmitter->emitHeaders() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 75
+Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 137
+Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
