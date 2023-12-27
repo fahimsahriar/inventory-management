@@ -4911,3 +4911,65 @@ Cake\Http\ResponseEmitter->emit() C:\Users\user\Desktop\updated_cms\vendor\cakep
 Cake\Http\Server->emit() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
 [main]
 
+2023-12-27 17:52:06 warning: Undefined array key "User"
+Request URL: /users/login
+Referer URL: http://localhost:8765/
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php, line 1222
+Cake\View\View->_evaluate() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php, line 1179
+Cake\View\View->_render() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php, line 862
+Cake\View\View->renderLayout() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php, line 821
+Cake\View\View->render() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php, line 790
+Cake\Controller\Controller->render() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php, line 569
+Cake\Controller\Controller->invokeAction() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 140
+Cake\Controller\ControllerFactory->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 115
+Cake\Controller\ControllerFactory->invoke() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 325
+Cake\Http\BaseApplication->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php, line 176
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 189
+Cake\Routing\Middleware\RoutingMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 68
+Cake\Routing\Middleware\AssetMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 60
+DebugKit\Middleware\DebugKitMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 67
+Cake\Http\Runner->run() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 99
+Cake\Http\Server->run() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+
+2023-12-27 17:52:06 warning: Trying to access array offset on value of type null
+Request URL: /users/login
+Referer URL: http://localhost:8765/
+Trace:
+C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php, line 1222
+Cake\View\View->_evaluate() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php, line 1179
+Cake\View\View->_render() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php, line 862
+Cake\View\View->renderLayout() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\View\View.php, line 821
+Cake\View\View->render() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php, line 790
+Cake\Controller\Controller->render() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\Controller.php, line 569
+Cake\Controller\Controller->invokeAction() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 140
+Cake\Controller\ControllerFactory->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 115
+Cake\Controller\ControllerFactory->invoke() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 325
+Cake\Http\BaseApplication->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php, line 176
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 189
+Cake\Routing\Middleware\RoutingMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 68
+Cake\Routing\Middleware\AssetMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 60
+DebugKit\Middleware\DebugKitMiddleware->process() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php, line 67
+Cake\Http\Runner->run() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php, line 99
+Cake\Http\Server->run() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
+[main]
+

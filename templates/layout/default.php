@@ -1,6 +1,11 @@
 <?php
+use Cake\ORM\TableRegistry;
 $cakeDescription = 'User management: Fahim';
 $loggedInUser = $this->request->getSession()->read('Auth');
+$table = TableRegistry::getTableLocator()->get('Notifications');
+if($loggedInUser){
+    $data = $table->find('list', ['conditions' => ['unread' => 0, 'userid' => $loggedInUser['User']['id']]])->toArray();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,12 +38,14 @@ $loggedInUser = $this->request->getSession()->read('Auth');
             <?php
             if ($loggedInUser) {
             ?>
-                <a href=""><i class="fa-regular fa-bell"></i></a>
-                <?php 
-                if (isset($headerData)) {
-                    echo count($headerData);
-                }
-                ?>
+                <a href="">
+                    <?php 
+                    if ($data) {
+                        echo count($data);
+                    }
+                    ?>
+                    <i class="fa-regular fa-bell"></i>
+                </a>
             <?php
                 echo $this->Html->link(__('Logout'), ['controller' => 'users', 'action' => 'logout']);
             } else {
