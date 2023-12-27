@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use Cake\Core\Configure;
 
 class ProductsController extends AppController
 {
@@ -12,6 +11,7 @@ class ProductsController extends AppController
         parent::initialize();
         $this->loadModel("Products");
         $this->loadModel("Categories");
+        $this->loadModel("Notifications");
     }
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
@@ -91,7 +91,22 @@ class ProductsController extends AppController
         }
 
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $product = $this->Products->patchEntity($product, $this->request->getData());
+            //checking that quantitiy of a product is changing or not
+            $formData = $this->request->getData();
+            if($product['quantity']!=$formData['quantity']){
+                $notification = $this->Notifications->newEmptyEntity();
+                $notification['productid'] = $product['id'];
+                $notification['userid'] = $loggedInUser['User']['id'];
+                $notification['description'] = 'Previous quantity was '.$product['quantity'].', and updated quantity is '.$formData['quantity'];
+                $notification['previous_quantity'] = $product['quantity'];
+                $notification['current_quantity'] = $formData['quantity'];
+                if ($this->Notifications->save($notification)) {
+                    $this->Flash->success(__('The product quantity updated.'));
+                }else{
+                    $this->Flash->error(__('The product quantity could not be updated. Please, try again.'));
+                }
+            }
+            $product = $this->Products->patchEntity($product, $formData);
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
 
