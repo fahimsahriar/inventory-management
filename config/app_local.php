@@ -90,5 +90,15 @@ return [
             'client' => null,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
         ],
+        'smtp' => [
+            'className' => 'Smtp',
+            'host' => 'ssl://smtp.gmail.com',
+            'port' => 465,
+            'timeout' => 30,
+            'username' => 'fahim.sahriar@sjinnovation.com',
+            'password' => 'Ve@29vl7VSv+YRW(JfW\~9t476rbl3',
+            'ssl' => true,
+            'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
+        ]
     ],
 ];

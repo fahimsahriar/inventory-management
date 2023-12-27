@@ -38,6 +38,11 @@ class UsersController extends AppController
             }
         }
     }
+    public function logout()
+    {
+        $this->Flash->success("Log out successfull");
+        return $this->redirect($this->Auth->logout());
+    }
     //user add and registration
     public function add()
     {
@@ -120,5 +125,51 @@ class UsersController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+    public function recover()
+    {
+        if ($this->request->is('post')) {
+            $token = Security::hash(Security::randomBytes(25));
+            
+            
+            $email = $this->request->getData('email');
+            if ($email == NULL) {
+                $this->Flash->error(__('Please insert your email address'));
+                return;
+            }
+
+            $userTable = TableRegistry::get('Users');
+            $user = $userTable->find('all')->where(['email' => $email])->first();
+            if ($user) {
+                $user->token = $token;
+                if ($userTable->save($user)) {
+                    $mailer = new Mailer('default');
+                    $mailer->setTransport('smtp');
+                    $mailer->setFrom(['fahim.sahriar@sjinnovation.com' => 'User management'])
+                        ->setTo($email)
+                        ->setEmailFormat('html')
+                        ->setSubject('Forgot Password Request')
+                        ->deliver('Hello<br/>Please click link below to reset your password<br/><br/><a href="http://localhost:8765/users/resetpassword/' . $token . '">Reset Password</a>');
+                }
+                $this->Flash->success('Reset password link has been sent to your email (' . $email . '), please check your email');
+            }else {
+                $this->Flash->error(__('Email is not registered in system'));
+            }
+        }
+    }
+    public function resetpassword($token)
+    {
+        if ($this->request->is('post')) {
+            $hasher = new DefaultPasswordHasher();
+            $newPass = $hasher->hash($this->request->getData('password'));
+
+            $userTable = TableRegistry::get('Users');
+            $user = $userTable->find('all')->where(['token' => $token])->first();
+            $user->password = $newPass;
+            if ($userTable->save($user)) {
+                $this->Flash->success('Password successfully reset. Please login using your new password');
+                return $this->redirect(['action' => 'login']);
+            }
+        }
     }
 }
