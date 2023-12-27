@@ -432,3 +432,34 @@ Referer URL: http://localhost:8765/users/recover
 =======
 Referer URL: http://localhost:8765/users/login
 >>>>>>> feature/#19-Create-forgot-password
+2023-12-27 07:24:23 error: [Cake\Http\Exception\MissingControllerException] Controller class Products could not be found. in C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 338
+Exception Attributes: array (
+  'controller' => 'Products',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+  'class' => 'Products',
+)
+Stack Trace:
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:75
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\BaseApplication.php:320
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\user\Desktop\updated_cms\webroot\index.php:40
+- [main]:
+
+Request URL: /products
+Referer URL: http://localhost:8765/products/edit/14
