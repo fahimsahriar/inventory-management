@@ -1381,6 +1381,7 @@ Cake\Http\Runner->run() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp
 Cake\Http\Server->run() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
 [main]
 
+<<<<<<< HEAD
 2023-12-22 12:17:52 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
 C:\Users\user\Desktop\updated_cms\src\Controller\UsersController.php, line: 20
 You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `src/Controller/UsersController.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
@@ -1413,6 +1414,9 @@ Cake\Http\Server->run() C:\Users\user\Desktop\updated_cms\webroot\index.php, lin
 [main]
 
 2023-12-22 12:17:52 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+=======
+2023-12-25 09:49:22 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+>>>>>>> feature/#19-Create-forgot-password
 C:\Users\user\Desktop\updated_cms\src\Controller\UsersController.php, line: 20
 You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `src/Controller/UsersController.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
 Request URL: /users/login
@@ -1443,7 +1447,11 @@ Cake\Http\Runner->run() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp
 Cake\Http\Server->run() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
 [main]
 
+<<<<<<< HEAD
 2023-12-22 12:17:54 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+=======
+2023-12-25 09:49:24 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+>>>>>>> feature/#19-Create-forgot-password
 C:\Users\user\Desktop\updated_cms\src\Controller\UsersController.php, line: 20
 You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `src/Controller/UsersController.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
 Request URL: /users/recover
@@ -1474,6 +1482,7 @@ Cake\Http\Runner->run() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp
 Cake\Http\Server->run() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
 [main]
 
+<<<<<<< HEAD
 2023-12-22 12:17:57 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
 C:\Users\user\Desktop\updated_cms\src\Controller\UsersController.php, line: 20
 You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `src/Controller/UsersController.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
@@ -1874,3 +1883,5 @@ Cake\Http\Runner->run() C:\Users\user\Desktop\updated_cms\vendor\cakephp\cakephp
 Cake\Http\Server->run() C:\Users\user\Desktop\updated_cms\webroot\index.php, line 40
 [main]
 
+=======
+>>>>>>> feature/#19-Create-forgot-password
