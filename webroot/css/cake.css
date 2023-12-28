@@ -222,6 +222,13 @@ th {
         content: " \2190";
     }
 }
+.landing-page-content{
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .heading{
     text-align:center;
 }
@@ -235,4 +242,9 @@ th {
 .inner_button{
     display: flex;
     gap: 20px;
+}
+.add_button_div{
+    display: flex;
+    gap:10px;
+    justify-content:end;
 }

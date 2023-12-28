@@ -26,6 +26,8 @@ class UsersController extends AppController
     }
     public function login()
     {
+        $user = $this->Users->newEmptyEntity();
+        $this->set(compact('user'));
         if ($this->request->is("post")) {
             $userData = $this->Auth->identify($this->request->getData());
             if ($userData) {
@@ -47,6 +49,7 @@ class UsersController extends AppController
     public function add()
     {
         $user = $this->Users->newEmptyEntity();
+        $this->set(compact('user'));
         if ($this->request->is('post')) {
             $userdata = $this->request->getData();
             $loggedInUser = $this->request->getSession()->read('Auth');
@@ -119,7 +122,7 @@ class UsersController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
+            $this->Flash->warning(__('The user has been deleted.'));
         } else {
             $this->Flash->error(__('The user could not be deleted. Please, try again.'));
         }
