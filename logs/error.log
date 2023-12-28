@@ -432,3 +432,82 @@ Referer URL: http://localhost:8765/users/recover
 =======
 Referer URL: http://localhost:8765/users/login
 >>>>>>> feature/#19-Create-forgot-password
+2023-12-28 04:22:10 error: [Cake\Database\Exception\DatabaseException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'cms.tbl_users' doesn't exist in C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 160
+Stack Trace:
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Schema\Collection.php:118
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php:92
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Table.php:528
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Query.php:309
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Query.php:185
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Table.php:1763
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Table.php:1281
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Datasource\Paging\NumericPaginator.php:228
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Datasource\Paging\NumericPaginator.php:190
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\Controller.php:992
+- C:\Users\Zahin\Desktop\fahim-onboarding\src\Controller\UsersController.php:74
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\Zahin\Desktop\fahim-onboarding\webroot\index.php:40
+- [main]:
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'cms.tbl_users' doesn't exist in C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php:39
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php:191
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php:78
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Connection.php:414
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php:70
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Connection.php:409
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Schema\Collection.php:158
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Schema\Collection.php:118
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php:92
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Table.php:528
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Query.php:309
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Query.php:185
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Table.php:1763
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Table.php:1281
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Datasource\Paging\NumericPaginator.php:228
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Datasource\Paging\NumericPaginator.php:190
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\Controller.php:992
+- C:\Users\Zahin\Desktop\fahim-onboarding\src\Controller\UsersController.php:74
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\Zahin\Desktop\fahim-onboarding\webroot\index.php:40
+- [main]:
+
+Request URL: /users
+Referer URL: http://localhost:8765/
