@@ -16,7 +16,6 @@ class ProductsController extends AppController
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
         parent::beforeFilter($event);
-        // $this->Auth->allow(['add', "recover", "resetpassword", 'verification']);
     }
     //user add and registration
     public function add()
@@ -41,11 +40,11 @@ class ProductsController extends AppController
     {
         $query = $this->Products->find('all', [
             'contain' => ['Categories'],
-            'conditions' => ['Products.deleted' => 0],
+            'conditions' => ['Products.deleted' => Configure::read('not_deleted')],
         ]);
         
         $products = $this->paginate($query, [
-            'limit' => 6,
+            'limit' => Configure::read('limit'),
         ]);
 
         $this->set(compact('products'));
@@ -63,14 +62,9 @@ class ProductsController extends AppController
     }
     public function edit($id = null)
     {
-        $categories = $this->Products->Categories->find('list')->where(['deleted' => 0]);
+        $categories = $this->Products->Categories->find('list')->where(['deleted' => Configure::read('not_deleted')]);
         $this->set(compact('categories'));
         $userData = $this->Auth->user();
-        // if($userData['role']== Configure::read('admin'))
-        // {
-        //     $this->Flash->error(__('You are not able to edit'));
-        //     return $this->redirect(['action' => 'index']);
-        // }
         $product = $this->Products->get($id, [
             'contain' => ['Categories'],
         ]);
@@ -89,14 +83,14 @@ class ProductsController extends AppController
     {
         $this->autoRender = false;
         $userData = $this->Auth->user();
-        if($userData['role']==0)
+        if($userData['role']==Configure::read('admin'))
         {
             $this->Flash->error(__('You are not able to edit'));
             return $this->redirect(['action' => 'index']);
         }
         $this->request->allowMethod(['post', 'delete']);
         $product = $this->Products->get($id);
-        $product->deleted = 1;
+        $product->deleted = Configure::read('not_deleted');
         if ($this->request->is(['patch', 'post', 'put'])) {
             if ($this->Products->save($product)) {
                 $this->Flash->warning(__('The product has been deleted'));

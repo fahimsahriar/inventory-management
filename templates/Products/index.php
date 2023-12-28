@@ -2,7 +2,7 @@
 use Cake\Core\Configure;
 ?>
 <div class="categories index content">
-    <div >
+    <div class="add_button_div">
         <?= $this->Html->link(__('New products'), ['action' => 'add'], ['class' => 'button button-outline float-right']) ?>
     </div>
     <h3><?= __('Products') ?></h3>

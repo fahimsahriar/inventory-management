@@ -20,16 +20,15 @@ class ProductsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-                ->notEmptyString('name', 'We need your name.')
-                ->notEmptyString('description', 'We need your product description.')
+                ->notEmptyString('name', 'Please enter your name.')
+                ->notEmptyString('description', 'Please enter your product description.')
                 ->integer('quantity', 'The value must be an integer')
                 ->greaterThanOrEqual('quantity', 0, 'The value must be a positive number or zero')
                 ->requirePresence('quantity', 'create')
-                ->notEmptyString('quantity', 'Please fill this field')
                 ->requirePresence('status', 'create')
                 ->notEmptyString('status', 'Please fill this field')
                 ->requirePresence('categories', 'create')
-                ->notEmptyString('categories', 'Please fill this field');
+                ->integer('quantity', 'The value must be an integer');
         return $validator;
     }
 }

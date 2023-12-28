@@ -2,8 +2,6 @@
 use Cake\Core\Configure;
 $this->Flash->render();
 $loggedInUser = $this->request->getSession()->read('Auth');
-// echo "<pre>";
-// var_dump($categories);
 ?>
 <div class="row">
     <div class="column-responsive">

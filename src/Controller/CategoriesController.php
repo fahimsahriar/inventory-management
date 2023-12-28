@@ -16,7 +16,7 @@ class CategoriesController extends AppController
     {
         parent::beforeFilter($event);
     }
-    //user add and registration
+    //category add, edit and delete
     public function add()
     {
         $category = $this->Categories->newEmptyEntity();
@@ -36,7 +36,7 @@ class CategoriesController extends AppController
     public function index()
     {
         $query = $this->Categories->find('all', [
-            'conditions' => ['deleted' => 0],
+            'conditions' => ['deleted' => Configure::read('not_deleted')],
         ]);
         $categories = $this->paginate($query, [
             'limit' => Configure::read('limit'),
@@ -54,9 +54,7 @@ class CategoriesController extends AppController
             $this->Flash->error(__('You are not able to edit'));
             return $this->redirect(['action' => 'index']);
         }
-        $category = $this->Categories->get($id, [
-            'contain' => [],
-        ]);
+        $category = $this->Categories->get($id);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $category = $this->Categories->patchEntity($category, $this->request->getData());
             if ($this->Categories->save($category)) {
