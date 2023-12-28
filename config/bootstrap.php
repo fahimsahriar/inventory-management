@@ -231,3 +231,4 @@ Configure::write('admin',0);
 Configure::write('super_admin',1);
 Configure::write('limit',6);
 Configure::write('deleted',1);
+Configure::write('not_deleted',0);
