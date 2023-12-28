@@ -26,8 +26,18 @@
                 </tr>
                 <tr>
                     <th><?= __('Status') ?></th>
-                    <td><?= h($product->status) ?></td>
+                    <td><?= (($product->status == 1) ? __('Active') : __('Inactive')) ?></td>
                 </tr>
+                <?php if ($notifications){ ?>
+                <th><?= __('Logs') ?></th>
+                <td><?= __('Description')?></td>
+                <?php } ?>
+                <?php foreach ($notifications as $notification) : ?>
+                <tr>
+                    <th><?= __('') ?></th>
+                    <td><?= $notification->description ?></td>
+                </tr>
+                <?php endforeach; ?>
             </table>
         </div>
     </div>

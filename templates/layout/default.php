@@ -3,8 +3,10 @@ use Cake\ORM\TableRegistry;
 $cakeDescription = 'User management: Fahim';
 $loggedInUser = $this->request->getSession()->read('Auth');
 $table = TableRegistry::getTableLocator()->get('Notifications');
+$Products = TableRegistry::getTableLocator()->get('Products');
 if($loggedInUser){
-    $data = $table->find('list', ['conditions' => ['unread' => 0, 'userid' => $loggedInUser['User']['id']]])->toArray();
+    $notifications = $table->find('all', ['contain' => ['Products'], 'conditions' => ['unread' => 0, 'Notifications.userid' => $loggedInUser['User']['id']],
+    'order' => ['Notifications.date_time' => 'DESC']])->toArray();
 }
 ?>
 <!DOCTYPE html>
@@ -38,14 +40,33 @@ if($loggedInUser){
             <?php
             if ($loggedInUser) {
             ?>
-                <a href="">
+            <div class="dropdown">
+                <div class="bell_div" onclick="toggleDropdown()">
                     <?php 
-                    if ($data) {
-                        echo count($data);
-                    }
+                        if ($notifications) {
+                            echo count($notifications);
+                        }
                     ?>
                     <i class="fa-regular fa-bell"></i>
-                </a>
+                </div>
+                <div id="dropdownMenu" class="dropdown-content">
+                    <?php foreach ($notifications as $notification) : ?>
+                        <?= $this->Form->postLink(
+                                    __($notification->product->name).__("'s quantity changed").__(". ").h($notification->description),
+                                    ['controller'=>'Notifications','action' => 'view', $notification->id]
+                        ) ?>
+                        <p class="time_ago"><?= $this->Time->timeAgoInWords($notification->date_time) ?></p>
+                        <div class="notication_area"></div>
+                    <?php endforeach; ?>
+                    <a href="<?= $this->Url->build([
+                                'controller' => 'Notifications',
+                                'action' => 'index',
+                            ]) ?>">
+                            See all
+                    </a>
+                </div>
+            </div>
+                
             <?php
                 echo $this->Html->link(__('Logout'), ['controller' => 'users', 'action' => 'logout']);
             } else {
@@ -64,4 +85,9 @@ if($loggedInUser){
     </footer>
 </body>
 <script src="https://kit.fontawesome.com/5a02838b79.js" crossorigin="anonymous"></script>
+<script>
+function toggleDropdown() {
+  document.getElementById("dropdownMenu").classList.toggle("show");
+}
+</script>
 </html>

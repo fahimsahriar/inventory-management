@@ -1,8 +1,5 @@
-<?php
-use Cake\Core\Configure;
-?>
 <div class="categories index content">
-    <div style="display: flex; gap:10px; justify-content:end;">
+    <div class="add_button_div">
         <?= $this->Html->link(__('New products'), ['action' => 'add'], ['class' => 'button button-outline float-right']) ?>
     </div>
     <h3><?= __('Products') ?></h3>
@@ -27,7 +24,7 @@ use Cake\Core\Configure;
                         <td><?= h($product->description) ?></td>
                         <td><?= h($product->category->name) ?></td>
                         <td><?= h($product->quantity) ?></td>
-                        <td><?= h($product->status) ?></td>
+                        <td><?= (($product->status == 1) ? __('Active') : __('Inactive')) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $product->id]) ?>
                             <?php

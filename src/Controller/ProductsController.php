@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
 
 class ProductsController extends AppController
 {
@@ -22,9 +23,10 @@ class ProductsController extends AppController
     {
         //category selection based on user
         $loggedInUser = $this->request->getSession()->read('Auth');
-        $categories = $this->Products->Categories->find('list',[
-            'conditions' => ['deleted' => 0, 'userid' => $loggedInUser['User']['id']],
+        $query = $this->Products->Categories->find('list',[
+            'conditions' => ['deleted' => Configure::read('not_deleted'), 'userid' => $loggedInUser['User']['id']],
         ]);
+        $categories = $query->toArray();
         $this->set(compact('categories'));
 
         $product = $this->Products->newEmptyEntity();
@@ -55,7 +57,7 @@ class ProductsController extends AppController
         ]);
         
         $products = $this->paginate($query, [
-            'limit' => 6,
+            'limit' => Configure::read('limit'),
         ]);
 
         $this->set(compact('products'));
@@ -69,13 +71,22 @@ class ProductsController extends AppController
             'contain' => ['Categories'],
         ]);
 
+        //for notification
+        $loggedInUser = $this->request->getSession()->read('Auth');
+        $query = $this->Notifications->find('all', [
+            'contain' => ['Products'],
+            'conditions' => ['Notifications.productid' => $product->id],
+        ]);
+        $notifications = $query->toArray();
+
         $this->set(compact('product'));
+        $this->set(compact('notifications'));
     }
     public function edit($id = null)
     {
         $loggedInUser = $this->request->getSession()->read('Auth');
         $categories = $this->Products->Categories->find('list',[
-            'conditions' => ['deleted' => 0, 'userid' => $loggedInUser['User']['id']],
+            'conditions' => ['deleted' => Configure::read('not_deleted'), 'userid' => $loggedInUser['User']['id']],
         ]);
         $this->set(compact('categories'));
 
@@ -100,6 +111,7 @@ class ProductsController extends AppController
                 $notification['description'] = 'Previous quantity was '.$product['quantity'].', and updated quantity is '.$formData['quantity'];
                 $notification['previous_quantity'] = $product['quantity'];
                 $notification['current_quantity'] = $formData['quantity'];
+                $notification['date_time'] = new \DateTime();
                 if ($this->Notifications->save($notification)) {
                     $this->Flash->success(__('The product quantity updated.'));
                 }else{
@@ -132,7 +144,7 @@ class ProductsController extends AppController
 
         $this->request->allowMethod(['post', 'delete']);
         $product = $this->Products->get($id);
-        $product->deleted = 1;
+        $product->deleted = Configure::read('not_deleted');
         if ($this->request->is(['patch', 'post', 'put'])) {
             if ($this->Products->save($product)) {
                 $this->Flash->warning(__('The product has been deleted'));

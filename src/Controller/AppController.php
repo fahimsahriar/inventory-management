@@ -73,7 +73,7 @@ class AppController extends Controller
     }
     public function beforeRender(\Cake\Event\EventInterface $event)
     {
-        $headerData = $this->HeaderData->getData();
-        $this->set('headerData', $headerData);
+        // $headerData = $this->HeaderData->getData();
+        // $this->set('headerData', $headerData);
     }
 }

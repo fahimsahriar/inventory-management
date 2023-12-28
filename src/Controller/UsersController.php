@@ -26,6 +26,8 @@ class UsersController extends AppController
     }
     public function login()
     {
+        $user = $this->Users->newEmptyEntity();
+        $this->set(compact('user'));
         if ($this->request->is("post")) {
             $userData = $this->Auth->identify($this->request->getData());
             if ($userData) {
@@ -40,13 +42,14 @@ class UsersController extends AppController
     }
     public function logout()
     {
-        $this->Flash->success("Log out successfull");
+        $this->Flash->warning("Log out successfull");
         return $this->redirect($this->Auth->logout());
     }
     //user add and registration
     public function add()
     {
         $user = $this->Users->newEmptyEntity();
+        $this->set(compact('user'));
         if ($this->request->is('post')) {
             $userdata = $this->request->getData();
             $loggedInUser = $this->request->getSession()->read('Auth');

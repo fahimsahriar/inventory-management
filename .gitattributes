@@ -1,6 +1,8 @@
 # Define the line ending behavior of the different file extensions
 # Set default behavior, in case users don't have core.autocrlf set.
 * text text=auto eol=lf
+/tmp/* merge=ours
+/logs/* merge=ours
 
 # Declare files that will always have CRLF line endings on checkout.
 *.bat eol=crlf

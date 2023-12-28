@@ -1,5 +1,4 @@
 <?php
-use Cake\Core\Configure;
 $this->Flash->render();
 $loggedInUser = $this->request->getSession()->read('Auth');
 ?>
@@ -20,8 +19,8 @@ $loggedInUser = $this->request->getSession()->read('Auth');
                     echo $this->Form->control('name');
                     echo $this->Form->control('status', [
                         'options' => [
-                            'active' => 'active',
-                            'inactive' => 'inactive'
+                            '1' => 'active',
+                            '0' => 'inactive'
                         ],
                         'empty' => '(choose status)'
                     ]);
