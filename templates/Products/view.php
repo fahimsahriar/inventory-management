@@ -26,7 +26,7 @@
                 </tr>
                 <tr>
                     <th><?= __('Status') ?></th>
-                    <td><?= h($product->status) ?></td>
+                    <td><?= (($product->status == 1) ? __('Active') : __('Inactive')) ?></td>
                 </tr>
             </table>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
 
 class CategoriesController extends AppController
 {
@@ -11,7 +12,11 @@ class CategoriesController extends AppController
         parent::initialize();
         $this->loadModel("Categories");
     }
-    //user categories
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+    }
+    //category add, edit and delete
     public function add()
     {
         $category = $this->Categories->newEmptyEntity();
@@ -36,10 +41,10 @@ class CategoriesController extends AppController
     {
         $loggedInUser = $this->request->getSession()->read('Auth');
         $query = $this->Categories->find('all', [
-            'conditions' => ['deleted' => 0, 'userid' => $loggedInUser['User']['id']],
+            'conditions' => ['deleted' => Configure::read('not_deleted'), 'userid' => $loggedInUser['User']['id']],
         ]);
         $categories = $this->paginate($query, [
-            'limit' => 6,
+            'limit' => Configure::read('limit'),
         ]);
 
         $this->set(compact('categories'));
@@ -48,9 +53,7 @@ class CategoriesController extends AppController
     }
     public function edit($id = null)
     {
-        $category = $this->Categories->get($id, [
-            'contain' => [],
-        ]);
+        $category = $this->Categories->get($id);
 
         //user varification
         $loggedInUser = $this->request->getSession()->read('Auth');
@@ -73,9 +76,7 @@ class CategoriesController extends AppController
     public function delete($id = null)
     {
         $this->autoRender = false;
-        $category = $this->Categories->get($id, [
-            'contain' => [],
-        ]);
+        $category = $this->Categories->get($id);
         //user varification
         $loggedInUser = $this->request->getSession()->read('Auth');
         if($loggedInUser['User']['id'] != $category['userid']){
@@ -85,7 +86,7 @@ class CategoriesController extends AppController
         
         $this->request->allowMethod(['post', 'delete']);
         $category = $this->Categories->get($id);
-        $category->deleted = 1;
+        $category->deleted = Configure::read('deleted');
         if ($this->request->is(['patch', 'post', 'put'])) {
             if ($this->Categories->save($category)) {
                 $this->Flash->warning(__('The category has been deleted'));
