@@ -1,6 +1,3 @@
-<?php
-use Cake\Core\Configure;
-?>
 <div class="categories index content">
     <div class="add_button_div">
         <?= $this->Html->link(__('New category'), ['action' => 'add'], ['class' => 'button button-outline float-right']) ?>
@@ -21,17 +18,11 @@ use Cake\Core\Configure;
                     <tr>
                         <td><?= $this->Number->format($category->id) ?></td>
                         <td><?= h($category->name) ?></td>
-                        <td><?= h($category->status) ?></td>
+                        <td><?= (($category->status == 1) ? __('Active') : __('Inactive')) ?></td>
                         <td class="actions">
                             <?php
-                            if ($userData['role'] == Configure::read('super_admin')) {
                                 echo $this->Html->link(__('Edit'), ['action' => 'edit', $category->id]);
-                            }
-                            ?>
-                            <?php
-                            if ($userData['role'] == Configure::read('super_admin')) {
                                 echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $category->id], ['confirm' => __('Are you sure you want to delete # {0}?', $category->id)]);
-                            }
                             ?>
                         </td>
                     </tr>

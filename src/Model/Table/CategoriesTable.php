@@ -17,7 +17,7 @@ class CategoriesTable extends Table
     {
         $validator
                 ->notEmptyString('name', 'Please provide category name')
-                ->notEmptyString('status', 'Please select a category status');
+                ->integer('status', 'Please select a category status');
         return $validator;
     }
 }

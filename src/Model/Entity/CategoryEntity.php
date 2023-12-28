@@ -9,5 +9,6 @@ class Category extends Entity
         'name' => true,
         'status' => true,
         'deleted' => true,
+        'userid' => true,
     ];
 }

@@ -1,19 +1,24 @@
 <?php
+use Cake\Core\Configure;
 $loggedInUser = $this->request->getSession()->read('Auth');
+if($loggedInUser){
+    $role = $loggedInUser['User']['role'];
+}
 ?>
 
 <div class="landing-page-content">
     <?php
         if ($loggedInUser){ ?>
-            <h2 class="heading">Welcome to dashboard, see <a class="" href="<?= $this->Url->build([
-                'controller' => 'Users',
-                'action' => 'index',
-            ]) ?>">user list</a> </h2>
+            <h2 class="heading">Welcome to dashboard</h2>
             <div class="inner_button">
-                <a class="button" href="<?= $this->Url->build([
-                    'controller' => 'Users',
-                    'action' => 'index',
-                ]) ?>">Userlist</a>
+                <?php
+                    if($role == Configure::read('super_admin')){ ?>
+                        <a class="button" href="<?= $this->Url->build([
+                            'controller' => 'Users',
+                            'action' => 'index',
+                        ]) ?>">Userlist</a>
+                    <?php }
+                ?>
                 <a class="button" href="<?= $this->Url->build([
                     'controller' => 'Products',
                     'action' => 'index',

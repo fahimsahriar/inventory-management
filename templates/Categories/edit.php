@@ -1,5 +1,4 @@
 <?php
-use Cake\Core\Configure;
 $this->Flash->render();
 $loggedInUser = $this->request->getSession()->read('Auth');
 ?>
@@ -12,16 +11,13 @@ $loggedInUser = $this->request->getSession()->read('Auth');
                 <legend><?= __('Edit User') ?></legend>
                 <?php
                     echo $this->Form->control('name');
-                    $role = $loggedInUser['User']['role'];
-                    if($role == Configure::read('super_admin')){
-                        echo $this->Form->control('status', [
-                            'options' => [
-                                'active' => 'active',
-                                'inactive' => 'inactive'
-                            ],
-                            'empty' => '(choose status)'
-                        ]);
-                    }
+                    echo $this->Form->control('status', [
+                        'options' => [
+                            '1' => 'active',
+                            '0' => 'inactive'
+                        ],
+                        'empty' => '(choose status)'
+                    ]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

@@ -26,7 +26,7 @@ class ProductsTable extends Table
                 ->greaterThanOrEqual('quantity', 0, 'The value must be a positive number or zero')
                 ->requirePresence('quantity', 'create')
                 ->requirePresence('status', 'create')
-                ->notEmptyString('status', 'Please fill this field')
+                ->integer('status', 'The value must be an integer')
                 ->requirePresence('categories', 'create')
                 ->integer('quantity', 'The value must be an integer');
         return $validator;

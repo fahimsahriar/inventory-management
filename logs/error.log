@@ -1,0 +1,77 @@
+2023-12-28 07:21:57 error: [Cake\Database\Exception\MissingConnectionException] Connection to Mysql could not be established: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Driver.php on line 144
+Exception Attributes: array (
+  'driver' => 'Mysql',
+  'reason' => 'SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it',
+)
+Stack Trace:
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php:165
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Schema\SchemaDialect.php:51
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php:217
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Schema\Collection.php:53
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Connection.php:542
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Table.php:527
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Marshaller.php:74
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Marshaller.php:567
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Table.php:2939
+- C:\Users\Zahin\Desktop\fahim-onboarding\src\Controller\CategoriesController.php:25
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:162
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\Zahin\Desktop\fahim-onboarding\webroot\index.php:40
+- [main]:
+
+Caused by: [PDOException] SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Driver.php on line 132
+Stack Trace:
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Driver.php:132
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php:70
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Driver.php:142
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php:165
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Schema\SchemaDialect.php:51
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php:217
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Schema\Collection.php:53
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Database\Connection.php:542
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Table.php:527
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Marshaller.php:74
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Marshaller.php:567
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\ORM\Table.php:2939
+- C:\Users\Zahin\Desktop\fahim-onboarding\src\Controller\CategoriesController.php:25
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\Controller.php:560
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:140
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:115
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\BaseApplication.php:325
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:86
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:176
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:162
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\Zahin\Desktop\fahim-onboarding\webroot\index.php:40
+- [main]:
+
+Request URL: /categories/add
+Referer URL: http://localhost:8765/categories/add

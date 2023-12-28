@@ -26,6 +26,15 @@
                     ]);
                 ?>
             </p>
+            <p>Need an account? register
+                <?php 
+                    echo $this->Html->link(__('here'),
+                    [
+                        'controller' => 'Users',
+                        'action' => 'add'
+                    ]);
+                ?>
+            </p>
         </div>
     </div>
 </div>
