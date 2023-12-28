@@ -412,3 +412,103 @@ Stack Trace:
 
 Request URL: /users/recover
 Referer URL: http://localhost:8765/users/recover
+2023-12-28 04:34:38 error: [Cake\Http\Exception\InvalidCsrfTokenException] Missing or invalid CSRF cookie. in C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php on line 396
+Stack Trace:
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:172
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:162
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\Zahin\Desktop\fahim-onboarding\webroot\index.php:40
+- [main]:
+
+Request URL: /users/login
+Referer URL: http://localhost:8765/users/login
+2023-12-28 04:44:36 error: [Cake\Http\Exception\InvalidCsrfTokenException] CSRF token from either the request body or request headers did not match or is missing. in C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php on line 419
+Stack Trace:
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php:172
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:162
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:189
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:149
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:82
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php:67
+- C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Server.php:99
+- C:\Users\Zahin\Desktop\fahim-onboarding\webroot\index.php:40
+- [main]:
+
+Request URL: /users/login
+Referer URL: http://localhost:8765/users/login
+2023-12-28 04:48:17 warning: Undefined variable $user
+Request URL: /users/login
+Trace:
+C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\View\View.php C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\View\View.php, line 1222
+Cake\View\View->_evaluate() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\View\View.php, line 1179
+Cake\View\View->_render() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\View\View.php, line 810
+Cake\View\View->render() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\Controller.php, line 790
+Cake\Controller\Controller->render() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\Controller.php, line 569
+Cake\Controller\Controller->invokeAction() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 140
+Cake\Controller\ControllerFactory->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 115
+Cake\Controller\ControllerFactory->invoke() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 325
+Cake\Http\BaseApplication->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Cake\Http\Runner->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php, line 176
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 189
+Cake\Routing\Middleware\RoutingMiddleware->process() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 68
+Cake\Routing\Middleware\AssetMiddleware->process() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 60
+DebugKit\Middleware\DebugKitMiddleware->process() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php, line 67
+Cake\Http\Runner->run() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Server.php, line 99
+Cake\Http\Server->run() C:\Users\Zahin\Desktop\fahim-onboarding\webroot\index.php, line 40
+[main]
+
+2023-12-28 04:48:20 warning: Undefined variable $user
+Request URL: /users/login
+Trace:
+C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\View\View.php C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\View\View.php, line 1222
+Cake\View\View->_evaluate() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\View\View.php, line 1179
+Cake\View\View->_render() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\View\View.php, line 810
+Cake\View\View->render() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\Controller.php, line 790
+Cake\Controller\Controller->render() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\Controller.php, line 569
+Cake\Controller\Controller->invokeAction() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 140
+Cake\Controller\ControllerFactory->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 115
+Cake\Controller\ControllerFactory->invoke() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 325
+Cake\Http\BaseApplication->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Cake\Http\Runner->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php, line 176
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 189
+Cake\Routing\Middleware\RoutingMiddleware->process() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 68
+Cake\Routing\Middleware\AssetMiddleware->process() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 60
+DebugKit\Middleware\DebugKitMiddleware->process() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Runner.php, line 67
+Cake\Http\Runner->run() C:\Users\Zahin\Desktop\fahim-onboarding\vendor\cakephp\cakephp\src\Http\Server.php, line 99
+Cake\Http\Server->run() C:\Users\Zahin\Desktop\fahim-onboarding\webroot\index.php, line 40
+[main]
+

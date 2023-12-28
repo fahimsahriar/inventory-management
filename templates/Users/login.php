@@ -2,7 +2,7 @@
 <div class="row">
     <div class="column-responsive mb-4">
         <div class="form content">
-            <?php echo $this->Form->create(null, [
+            <?php echo $this->Form->create($user, [
                 'url' => [
                     "controller" => "Users",
                     "action" => "login"
