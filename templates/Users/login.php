@@ -2,7 +2,7 @@
 <div class="row">
     <div class="column-responsive mb-4">
         <div class="form content">
-            <?php echo $this->Form->create(null, [
+            <?php echo $this->Form->create($user, [
                 'url' => [
                     "controller" => "Users",
                     "action" => "login"
@@ -23,6 +23,15 @@
                     [
                         'controller' => 'Users',
                         'action' => 'recover'
+                    ]);
+                ?>
+            </p>
+            <p>Need an account? register
+                <?php 
+                    echo $this->Html->link(__('here'),
+                    [
+                        'controller' => 'Users',
+                        'action' => 'add'
                     ]);
                 ?>
             </p>
