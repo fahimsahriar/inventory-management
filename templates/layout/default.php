@@ -1,11 +1,12 @@
 <?php
 use Cake\ORM\TableRegistry;
+use Cake\Core\Configure;
 $cakeDescription = 'User management: Fahim';
 $loggedInUser = $this->request->getSession()->read('Auth');
 $table = TableRegistry::getTableLocator()->get('Notifications');
 $Products = TableRegistry::getTableLocator()->get('Products');
 if($loggedInUser){
-    $notifications = $table->find('all', ['contain' => ['Products'], 'conditions' => ['unread' => 0, 'Notifications.userid' => $loggedInUser['User']['id']],
+    $notifications = $table->find('all', ['contain' => ['Products'], 'conditions' => ['unread' => Configure::read('unread'), 'Notifications.userid' => $loggedInUser['User']['id']],
     'order' => ['Notifications.date_time' => 'DESC']])->toArray();
 }
 ?>
@@ -85,9 +86,5 @@ if($loggedInUser){
     </footer>
 </body>
 <script src="https://kit.fontawesome.com/5a02838b79.js" crossorigin="anonymous"></script>
-<script>
-function toggleDropdown() {
-  document.getElementById("dropdownMenu").classList.toggle("show");
-}
-</script>
+<?= $this->Html->script("notification_toggle.js") ?>
 </html>

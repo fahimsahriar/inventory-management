@@ -12,6 +12,7 @@ class TblNotification extends Entity
         'previous_quantity' => true,
         'current_quantity' => true,
         'unread' => true,
+        'date_time' => true,
     ];
 }
 ?>

@@ -1,3 +1,6 @@
+<?php
+use Cake\Core\Configure;
+?>
 <div class="categories index content">
     <h3><?= __('notifications') ?></h3>
     <div class="table-responsive">
@@ -14,7 +17,7 @@
                 <?php foreach ($notifications as $notification) : ?>
                     <tr>
                         <td><?= $this->Time->nice($notification->date_time) ?></td>
-                        <?php if($notification->unread == 0){ ?>
+                        <?php if($notification->unread == Configure::read('unread')){ ?>
                             <td class="unread_class"><?= __($notification->product->name).__("'s quantity changed").__(". ").h($notification->description) ?></td>
                         <?php } else{ ?>
                             <td><?= __($notification->product->name).__("'s quantity changed").__(". ").h($notification->description) ?></td>

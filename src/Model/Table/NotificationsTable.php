@@ -24,17 +24,20 @@ class NotificationsTable extends Table
     {
         $validator
             ->integer('id')
-            ->allowEmptyString('id', null, 'create');
+            ->notEmpty('id')
+            ->greaterThanOrEqual('id', 0);
 
         $validator
             ->integer('productid')
             ->requirePresence('productid', 'create')
-            ->notEmptyString('productid');
+            ->notEmpty('productid')
+            ->greaterThanOrEqual('productid', 0);
 
         $validator
             ->integer('userid')
             ->requirePresence('userid', 'create')
-            ->notEmptyString('userid');
+            ->notEmpty('userid')
+            ->greaterThanOrEqual('userid', 0);
 
         $validator
             ->scalar('description')
@@ -43,19 +46,25 @@ class NotificationsTable extends Table
             ->notEmptyString('description');
 
         $validator
-            ->integer('previous')
-            ->requirePresence('previous', 'create')
-            ->notEmptyString('previous');
+            ->integer('previous_quantity')
+            ->requirePresence('previous_quantity', 'create')
+            ->notEmpty('previous_quantity')
+            ->greaterThanOrEqual('previous_quantity', 0);
 
         $validator
-            ->integer('current')
-            ->requirePresence('current', 'create')
-            ->notEmptyString('current');
+            ->integer('current_quantity')
+            ->requirePresence('current_quantity', 'create')
+            ->notEmpty('current_quantity')
+            ->greaterThanOrEqual('current_quantity', 0);
 
         $validator
             ->integer('unread')
             ->requirePresence('unread', 'create')
-            ->notEmptyString('unread');
+            ->notEmpty('unread')
+            ->greaterThanOrEqual('unread', 0);
+        $validator
+            ->requirePresence('date_time', 'create')
+            ->notEmpty('date_time');
 
         return $validator;
     }

@@ -71,9 +71,4 @@ class AppController extends Controller
          */
         //$this->loadComponent('FormProtection');
     }
-    public function beforeRender(\Cake\Event\EventInterface $event)
-    {
-        // $headerData = $this->HeaderData->getData();
-        // $this->set('headerData', $headerData);
-    }
 }
