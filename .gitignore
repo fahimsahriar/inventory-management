@@ -1,7 +1,7 @@
 # CakePHP specific files #
 ##########################
-/logs/*
-/tmp/*
+logs/*
+tmp/*
 # OS generated files #
 ######################
 .DS_Store
