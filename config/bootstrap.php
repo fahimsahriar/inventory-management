@@ -229,7 +229,7 @@ TypeFactory::map('time', StringType::class);
 //\Cake\I18n\FrozenTime::setToStringFormat('dd.MM.yyyy HH:mm');
 Configure::write('admin',0);
 Configure::write('super_admin',1);
-Configure::write('limit',6);
+Configure::write('limit',10);
 Configure::write('deleted',1);
 Configure::write('not_deleted',0);
 Configure::write('unread',0);

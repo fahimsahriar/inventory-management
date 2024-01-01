@@ -8,7 +8,7 @@ class Invoice extends Entity
     protected $_accessible = [
         'email' => true,
         'userid' => true,
-        'date_time' => true,
+        'created_at	' => true,
     ];
 }
 ?>

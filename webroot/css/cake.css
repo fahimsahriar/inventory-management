@@ -296,3 +296,10 @@ cursor: pointer;
 .time_ago{
     padding: 6px 20px;
 }
+.invoice_submission_btn{
+    margin-top: 30px;
+    float: right;
+}
+.invoice_add_product_btn{
+    margin-top: 20px;
+}
