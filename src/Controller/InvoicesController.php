@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Core\Configure;
+use Cake\Mailer\Mailer;
 
 class InvoicesController extends AppController
 {
@@ -14,7 +15,7 @@ class InvoicesController extends AppController
         $this->loadModel("Categories");
         $this->loadModel("Notifications");
         $this->loadModel("Products");
-        $this->loadModel("InvoicedProducts");
+        $this->loadModel("SelectedProducts");
     }
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
@@ -59,12 +60,29 @@ class InvoicesController extends AppController
                 // Read the current cart data
                 $cart = $session->read('Cart');
                 foreach($cart as $index => $product) {
-                    $invoice_product = $this->InvoicedProducts->newEmptyEntity();
+                    $invoice_product = $this->SelectedProducts->newEmptyEntity();
                     $invoice_product['invoiceid'] = $lastInsertedId;
                     $invoice_product['productid'] = $product['id'];
                     $invoice_product['quantity'] = $product['quantity'];
 
-                    if($this->InvoicedProducts->save($invoice_product)){}else{
+                    if($this->SelectedProducts->save($invoice_product)){
+                        $processed_product = $this->Products->get($product['id']);
+                        // notification module
+                        $notification = $this->Notifications->newEmptyEntity();
+                        $notification['previous_quantity'] = $processed_product['quantity'];
+                        $processed_product['quantity'] = $processed_product['quantity'] - $product['quantity'];
+                        $notification['current_quantity'] = $processed_product['quantity'];
+                        $notification['productid'] = $product['id'];
+                        $notification['userid'] = $loggedInUser['id'];
+                        $notification['description'] = 'Previous quantity was '.$notification['previous_quantity'].', and updated quantity is '.$notification['current_quantity'];
+                        $notification['date_time'] = new \DateTime();
+                        //updating product
+                        $this->Products->save($processed_product);
+                        if ($this->Notifications->save($notification)) {
+                        }else{
+                            $this->Flash->error(__('The product quantity could not be updated. Please, try again.'));
+                        }
+                    }else{
                         $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
                         return $this->redirect(['action' => 'index']);
                     }
@@ -194,9 +212,9 @@ class InvoicesController extends AppController
             'contain' => ['Users'],
         ]);
 
-        $query = $this->InvoicedProducts->find('all', [
+        $query = $this->SelectedProducts->find('all', [
             'contain' => ['Products'],
-            'conditions' => ['InvoicedProducts.invoiceid' => $invoice->id],
+            'conditions' => ['SelectedProducts.invoiceid' => $invoice->id],
         ]);
         $products = $query->toArray();
 
@@ -211,7 +229,7 @@ class InvoicesController extends AppController
         $invoice = $this->Invoices->get($id);
         $loggedInUser = $this->request->getSession()->read('Auth');
         if($loggedInUser['User']['id'] != $invoice['userid']){
-            $this->Flash->error(__('You are not permited to delet'));
+            $this->Flash->error(__('You are not permited to delete'));
             return $this->redirect(['action' => 'index']);
         }
 
@@ -226,46 +244,80 @@ class InvoicesController extends AppController
             $this->Flash->error(__('The product could not be deleted. Please, try again'));
         }
     }
-    public function editinvoice(){
-        $invoice = $this->Invoices->newEmptyEntity();
-        $loggedInUser = $this->request->getSession()->read('Auth');
-        $loggedInUser = $loggedInUser['User'];
-        $this->set(compact('loggedInUser'));
+    public function editinvoice($id = null){
+        $invoice = $this->Invoices->get($id, [
+            'contain' => ['Users'],
+        ]);
         $this->set(compact('invoice'));
+        //User verification
+        $loggedInUser = $this->request->getSession()->read('Auth');
+        if($loggedInUser['User']['id'] != $invoice['userid']){
+            $this->Flash->error(__('You are not permited to edit'));
+            return $this->redirect(['action' => 'index']);
+        }
+        //getting existing products in session
+        $query = $this->SelectedProducts->find('all', [
+            'contain' => ['Products'],
+            'conditions' => ['SelectedProducts.invoiceid' => $invoice->id],
+        ]);
+        $products = $query->toArray();
 
         $session = $this->request->getSession();
-        $session->write('email', $loggedInUser['email']);
-        $session->write('userid', $loggedInUser['id']);
-
-        $invoice['email'] = $loggedInUser['email'];
-        $invoice['userid'] = $loggedInUser['id'];
-        $invoice['created_at'] = new \DateTime();
-
-        if ($this->request->is('post')) {
-            $entity = $this->Invoices->save($invoice);
-            if ($entity) {
-                $lastInsertedId = $entity->id;
-                $session = $this->request->getSession();
-                // Read the current cart data
-                $cart = $session->read('Cart');
-                foreach($cart as $index => $product) {
-                    $invoice_product = $this->InvoicedProducts->newEmptyEntity();
-                    $invoice_product['invoiceid'] = $lastInsertedId;
-                    $invoice_product['productid'] = $product['id'];
-                    $invoice_product['quantity'] = $product['quantity'];
-
-                    if($this->InvoicedProducts->save($invoice_product)){}else{
-                        $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
-                        return $this->redirect(['action' => 'index']);
-                    }
-                }
-
-                $this->Flash->success(__('The invoice saved.'));
-                $session->delete('Cart');
-                return $this->redirect(['action' => 'index']);
-            }else{
-                $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
-            }
+        $session->delete('Cart');  // Delete any existing 'Cart' session
+        $session->write('Cart', []);  // Initialize an empty 'Cart' session
+        foreach ($products as $product) {
+            $session_product = ['id' => $product->product->id, 'quantity' => $product->quantity];
+        
+            // Read current cart data
+            $cart = $session->read('Cart');
+        
+            // Append new product into cart data
+            $cart[] = $session_product;
+            
+            // Update the session value
+            $session->write('Cart', $cart);
         }
+        if ($this->request->is('post')) {
+            // Read the current cart data
+            $cart = $session->read('Cart');
+            foreach($cart as $index => $product) {
+                $invoice_product = $this->SelectedProducts->newEmptyEntity();
+                $invoice_product['invoiceid'] = $invoice->id; //invoice id
+                $invoice_product['productid'] = $product['id'];
+                $invoice_product['quantity'] = $product['quantity'];
+
+                $temp = $this->SelectedProducts->save($invoice_product);
+                echo "<pre>";
+                var_dump($temp);
+                echo "</pre>";
+                //die;
+
+                if($temp){}else{
+                    $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
+                    return $this->redirect(['action' => 'index']);
+                }
+            }
+
+            $this->Flash->success(__('The invoice saved.'));
+            $session->delete('Cart');
+            return $this->redirect(['action' => 'index']);
+        }
+    }
+    public function mailinvoice($id = null){
+        $this->autoRender = false;
+        $invoice = $this->Invoices->get($id, [
+            'contain' => ['Users'],
+        ]);
+    
+        $query = $this->SelectedProducts->find('all', [
+            'contain' => ['Products'],
+            'conditions' => ['SelectedProducts.invoiceid' => $id],
+        ]);
+        $products = $query->toArray();
+        $mailer = new \App\Mailer\InvoiceMailer();
+        $mailer->send('invoice', [$invoice, $products]);
+        $this->Flash->success(__('The invoice send in your email.'));
+        return $this->redirect(['action' => 'index']);
+
     }
 }

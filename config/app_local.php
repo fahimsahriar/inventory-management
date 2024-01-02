@@ -96,9 +96,33 @@ return [
             'port' => 465,
             'timeout' => 30,
             'username' => 'fahim.sahriar@sjinnovation.com',
-            'password' => 'Ve@29vl7VSv+YRW(JfW\~9t476rbl3',
+            'password' => 'rzE0ZEHs7lVm3@5i>tT0#hwh/L\#49OK6V7',
             'ssl' => true,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
         ]
     ],
+    // 'EmailTransport' => [
+    //     'default' => [
+    //         'className' => 'Smtp',
+    //         // The following keys are used in SMTP transports
+    //         'host' => 'ssl://smtp.gmail.com',
+    //         'port' => 465,
+    //         'timeout' => 30,
+    //         'username' => 'fahimsahriar082@gmail.com',
+    //         'password' => 'Z5aE4QuQzp9i9k15{@4a4<HV>lCzE&',
+    //         'client' => null,
+    //         'tls' => null,
+    //         'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
+    //     ],
+    // ],
+
+    // 'Email' => [
+    //     'default' => [
+    //         'transport' => 'default',
+    //         'from' => 'you@localhost',
+    //         //'charset' => 'utf-8',
+    //         //'headerCharset' => 'utf-8',
+    //     ],
+    // ],
+
 ];

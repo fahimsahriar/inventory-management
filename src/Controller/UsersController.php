@@ -146,7 +146,7 @@ class UsersController extends AppController
             if ($user) {
                 $user->token = $token;
                 if ($userTable->save($user)) {
-                    $mailer = new Mailer('default');
+                    $mailer = new Mailer();
                     $mailer->setTransport('smtp');
                     $mailer->setFrom(['fahim.sahriar@sjinnovation.com' => 'User management'])
                         ->setTo($email)

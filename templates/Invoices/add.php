@@ -15,7 +15,7 @@ $user_id = $session->read('userid');
                     echo $this->Html->link(__('Back'), ['controller' => 'Pages','action' => 'display'], ['class' => 'button float-right']);
                 }
             ?>
-            <?= $this->Form->create($invoice) ?>
+            <?= $this->Form->create(null) ?>
                 <legend><?= __('Create invoice') ?></legend>
                 <div class="table-responsive">
                     <p>Name: <?= $loggedInUser['name'] ?></p>

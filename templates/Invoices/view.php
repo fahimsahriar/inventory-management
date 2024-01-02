@@ -37,12 +37,12 @@
                 </tr>
                 <?php endforeach; ?>
                 <tr>
-                    <td>Total</td>
+                    <th>Total</th>
                     <td><?= $total_products ?></td>
                 </tr>
             </table>
             <hr>
-            <button class="float-right">Email a copy</button>
+            <?= $this->Html->link(__('Email a copy'), ['action' => 'mailinvoice', $invoice->id], ['class' => 'button float-right']) ?>
             <hr>
         </div>
     </div>

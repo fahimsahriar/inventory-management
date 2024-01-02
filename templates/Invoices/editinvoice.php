@@ -9,17 +9,13 @@ $user_id = $session->read('userid');
     <div class="column-responsive mb-4">
         <div class="form content">
             <?php
-                if($loggedInUser){
-                    echo $this->Html->link(__('Back'), ['action' => 'index'], ['class' => 'button float-right']);
-                }else{
-                    echo $this->Html->link(__('Back'), ['controller' => 'Pages','action' => 'display'], ['class' => 'button float-right']);
-                }
+                echo $this->Html->link(__('Back'), ['action' => 'index'], ['class' => 'button float-right']);
             ?>
-            <?= $this->Form->create($invoice) ?>
+            <?= $this->Form->create(null) ?>
                 <legend><?= __('Create invoice') ?></legend>
                 <div class="table-responsive">
-                    <p>Name: <?= $loggedInUser['name'] ?></p>
-                    <p>Email: <?= $loggedInUser['email'] ?></p>
+                    <p>Name: <?= $invoice->user->name ?></p>
+                    <p>Email: <?= $invoice->email ?></p>
                 </div>
                 <div class="add_products">
                     <?php
@@ -57,7 +53,7 @@ $user_id = $session->read('userid');
                                     <?php endforeach; ?>
                                     <tfoot>
                                         <td></td>
-                                        <td>Total: <?= $total_quantity ?></td>
+                                        <th>Total: <?= $total_quantity ?></th>
                                         <td></td>
                                     </tfoot>
                             </table>
