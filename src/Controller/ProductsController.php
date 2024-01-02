@@ -143,7 +143,6 @@ class ProductsController extends AppController
         }
 
         $this->request->allowMethod(['post', 'delete']);
-        //$product = $this->Products->get($id);
         $product->deleted = Configure::read('deleted');
         if ($this->request->is(['patch', 'post', 'put'])) {
             if ($this->Products->save($product)) {

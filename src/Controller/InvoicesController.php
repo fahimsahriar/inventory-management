@@ -25,7 +25,7 @@ class InvoicesController extends AppController
         $loggedInUser = $this->request->getSession()->read('Auth');
         $query = $this->Invoices->find('all', [
             'contain' => ['Users'],
-            'conditions' => ['Invoices.userid' => $loggedInUser['User']['id']],
+            'conditions' => ['Invoices.userid' => $loggedInUser['User']['id'], 'Invoices.deleted' => 0,],
         ]);
         
         $invoices = $this->paginate($query, [
@@ -186,6 +186,86 @@ class InvoicesController extends AppController
             $session->write('Cart', $cart);
             return $this->redirect(['action' => 'add']);
 
+        }
+    }
+    public function view($id = null)
+    {
+        $invoice = $this->Invoices->get($id, [
+            'contain' => ['Users'],
+        ]);
+
+        $query = $this->InvoicedProducts->find('all', [
+            'contain' => ['Products'],
+            'conditions' => ['InvoicedProducts.invoiceid' => $invoice->id],
+        ]);
+        $products = $query->toArray();
+
+        $this->set(compact('invoice'));
+        $this->set(compact('products'));
+    }
+    public function delete($id = null)
+    {
+        $this->autoRender = false;
+        
+        //user varification
+        $invoice = $this->Invoices->get($id);
+        $loggedInUser = $this->request->getSession()->read('Auth');
+        if($loggedInUser['User']['id'] != $invoice['userid']){
+            $this->Flash->error(__('You are not permited to delet'));
+            return $this->redirect(['action' => 'index']);
+        }
+
+        $this->request->allowMethod(['post', 'delete']);
+        $invoice->deleted = Configure::read('deleted');
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            if ($this->Invoices->save($invoice)) {
+                $this->Flash->warning(__('The product has been deleted'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The product could not be deleted. Please, try again'));
+        }
+    }
+    public function editinvoice(){
+        $invoice = $this->Invoices->newEmptyEntity();
+        $loggedInUser = $this->request->getSession()->read('Auth');
+        $loggedInUser = $loggedInUser['User'];
+        $this->set(compact('loggedInUser'));
+        $this->set(compact('invoice'));
+
+        $session = $this->request->getSession();
+        $session->write('email', $loggedInUser['email']);
+        $session->write('userid', $loggedInUser['id']);
+
+        $invoice['email'] = $loggedInUser['email'];
+        $invoice['userid'] = $loggedInUser['id'];
+        $invoice['created_at'] = new \DateTime();
+
+        if ($this->request->is('post')) {
+            $entity = $this->Invoices->save($invoice);
+            if ($entity) {
+                $lastInsertedId = $entity->id;
+                $session = $this->request->getSession();
+                // Read the current cart data
+                $cart = $session->read('Cart');
+                foreach($cart as $index => $product) {
+                    $invoice_product = $this->InvoicedProducts->newEmptyEntity();
+                    $invoice_product['invoiceid'] = $lastInsertedId;
+                    $invoice_product['productid'] = $product['id'];
+                    $invoice_product['quantity'] = $product['quantity'];
+
+                    if($this->InvoicedProducts->save($invoice_product)){}else{
+                        $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
+                        return $this->redirect(['action' => 'index']);
+                    }
+                }
+
+                $this->Flash->success(__('The invoice saved.'));
+                $session->delete('Cart');
+                return $this->redirect(['action' => 'index']);
+            }else{
+                $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
+            }
         }
     }
 }

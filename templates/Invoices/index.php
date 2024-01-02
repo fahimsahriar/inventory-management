@@ -8,8 +8,8 @@
             <thead>
                 <tr>
                     <th><?= __('Invoice id') ?></th>
-                    <th><?= __('userid') ?></th>
-                    <th><?= __('email') ?></th>
+                    <th><?= __('User name') ?></th>
+                    <th><?= __('Email') ?></th>
                     <th><?= $this->Paginator->sort('Created at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
@@ -18,7 +18,7 @@
                 <?php foreach ($invoices as $invoice) : ?>
                     <tr>
                         <td><?= $this->Number->format($invoice->id) ?></td>
-                        <td><?= h($invoice->userid) ?></td>
+                        <td><?= h($invoice->user->name) ?></td>
                         <td><?= h($invoice->email) ?></td>
                         <td><?= h($invoice->created_at) ?></td>
                         <td class="actions">
