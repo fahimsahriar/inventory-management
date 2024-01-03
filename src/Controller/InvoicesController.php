@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Core\Configure;
-use Cake\Mailer\Mailer;
 
 class InvoicesController extends AppController
 {
@@ -37,7 +36,7 @@ class InvoicesController extends AppController
         $userData =  $loggedInUser['User'];
         $this->set(compact('userData'));
     }
-    public function add(){
+    public function add($editflag = null){
         $invoice = $this->Invoices->newEmptyEntity();
         $loggedInUser = $this->request->getSession()->read('Auth');
         $loggedInUser = $loggedInUser['User'];
@@ -47,6 +46,9 @@ class InvoicesController extends AppController
         $session = $this->request->getSession();
         $session->write('email', $loggedInUser['email']);
         $session->write('userid', $loggedInUser['id']);
+        if($editflag != Configure::read('editflag')){
+            $session->write('Cart', []);
+        }
 
         $invoice['email'] = $loggedInUser['email'];
         $invoice['userid'] = $loggedInUser['id'];
@@ -140,7 +142,7 @@ class InvoicesController extends AppController
             // Update the session value
             $session->write('Cart', $cart);
 
-            return $this->redirect(['action' => 'add']);
+            return $this->redirect(['action' => 'add', Configure::read('editflag')]);
 
         }
     }
@@ -178,7 +180,6 @@ class InvoicesController extends AppController
         $product = $this->Products->get($cart[$selected]['id'], [
             'contain' => ['Categories'],
         ]);
-        var_dump($selected);
         $this->set(compact('product'));
         $this->set(compact('selected'));
 
@@ -195,7 +196,7 @@ class InvoicesController extends AppController
                 $index_here++;
             }
             $session->write('Cart', $cart);
-            return $this->redirect(['action' => 'editinvoice', $invoiceid, 1]);
+            return $this->redirect(['action' => 'editinvoice', $invoiceid, Configure::read('editflag')]);
 
         }
     }
@@ -230,7 +231,7 @@ class InvoicesController extends AppController
             
             // Update the session value with the new cart
             $session->write('Cart', $cart);
-            return $this->redirect(['action' => 'editinvoice', $invoiceid, 1]);
+            return $this->redirect(['action' => 'editinvoice', $invoiceid, Configure::read('editflag')]);
 
         }
     }
@@ -291,7 +292,7 @@ class InvoicesController extends AppController
         $products = $query->toArray();
 
         $session = $this->request->getSession();
-        if($editflag != 1){
+        if($editflag != Configure::read('editflag')){
             $session->write('Cart', []);  // Initialize an empty 'Cart' session
             foreach ($products as $product) {
                 $session_product = ['id' => $product->product->id, 'quantity' => $product->quantity];
@@ -308,6 +309,15 @@ class InvoicesController extends AppController
         }
         if ($this->request->is(['post', 'put'])) {
             $this->SelectedProducts->deleteAll(['SelectedProducts.invoiceid' => $invoice->id]);
+            
+            $previous_quantity = [];
+            $updated_quantity = [];
+            foreach ($products as $product) {
+                $processed_product = $this->Products->get($product->product->id);
+                $previous_quantity[$processed_product['id']] = $processed_product['quantity'];
+                $processed_product['quantity'] = $processed_product['quantity'] + $product->quantity;
+                $this->Products->save($processed_product);
+            }
             // Read the current cart data
             $cart = $session->read('Cart');
             foreach($cart as $index => $product) {
@@ -316,9 +326,25 @@ class InvoicesController extends AppController
                 $invoice_product['productid'] = $product['id'];
                 $invoice_product['quantity'] = $product['quantity'];
 
-                $temp = $this->SelectedProducts->save($invoice_product);
+                //product adjusting
+                $processed_product = $this->Products->get($product['id']);
+                $processed_product['quantity'] = $processed_product['quantity'] - $product['quantity'];
+                $saved_products = $this->Products->save($processed_product);
 
-                if($temp){}else{
+                //notification update
+                $updated_quantity[$saved_products['id']] = $saved_products['quantity'];
+                $notification = $this->Notifications->newEmptyEntity();
+                $notification['previous_quantity'] = $previous_quantity[$saved_products['id']];
+                $notification['current_quantity'] = $updated_quantity[$saved_products['id']];
+                $notification['productid'] = $saved_products['id'];
+                $notification['userid'] = $loggedInUser['User']['id'];
+                $notification['description'] = 'Previous quantity was '.$notification['previous_quantity'].', and updated quantity is '.$notification['current_quantity'];
+                $notification['date_time'] = new \DateTime();
+                $this->Notifications->save($notification);
+
+                $saved_selected_product = $this->SelectedProducts->save($invoice_product);
+
+                if($saved_selected_product){}else{
                     $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
                     return $this->redirect(['action' => 'index']);
                 }
