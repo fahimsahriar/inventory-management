@@ -31,6 +31,7 @@ $user_id = $session->read('userid');
                                     <?php
                                     $counter = 0;
                                     $total_quantity = 0;
+                                    $invoiceid = $invoice->id;
                                      ?>
                                     <?php foreach ($cart as $item) : ?>
                                     <tbody>
@@ -44,9 +45,9 @@ $user_id = $session->read('userid');
                                         <td><?= $item['quantity'] ?></td>
                                         <td class="actions">
                                         <?php
-                                            echo $this->Form->postLink(__('Remove'), ['action' => 'remove', $counter], ['confirm' => __('Are you sure you want to remove?')]);
+                                            echo $this->Form->postLink(__('Remove'), ['action' => 'remove', $counter,$invoiceid ], ['confirm' => __('Are you sure you want to remove?')]);
                                         ?>
-                                            <?= $this->Html->link(__('Edit'), ['action' => 'editcart', $counter]) ?>
+                                            <?= $this->Html->link(__('Edit'), ['action' => 'editcartforeditinginvoice', $counter, $invoiceid]) ?>
                                         </td>
                                     </tbody>  
                                     <?php $counter++; ?> 

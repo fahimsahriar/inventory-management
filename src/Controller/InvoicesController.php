@@ -171,7 +171,35 @@ class InvoicesController extends AppController
 
         }
     }
-    public function remove($selected = null)
+    public function editcartforeditinginvoice($selected = null, $invoiceid = null)
+    {
+        $session = $this->request->getSession();
+        $cart = $session->read('Cart');
+        $product = $this->Products->get($cart[$selected]['id'], [
+            'contain' => ['Categories'],
+        ]);
+        var_dump($selected);
+        $this->set(compact('product'));
+        $this->set(compact('selected'));
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $productdata = $this->request->getData();
+
+            // Modify 
+            $index_here = 0;
+            foreach($cart as $index => $product) {
+                if($index_here == $selected) {
+                    $cart[$index]['quantity'] = $productdata['quantity'];
+                    break;
+                }
+                $index_here++;
+            }
+            $session->write('Cart', $cart);
+            return $this->redirect(['action' => 'editinvoice', $invoiceid, 1]);
+
+        }
+    }
+    public function remove($selected = null, $invoiceid = null)
     {
         $this->autoRender = false;
         $session = $this->request->getSession();
@@ -202,7 +230,7 @@ class InvoicesController extends AppController
             
             // Update the session value with the new cart
             $session->write('Cart', $cart);
-            return $this->redirect(['action' => 'add']);
+            return $this->redirect(['action' => 'editinvoice', $invoiceid, 1]);
 
         }
     }
@@ -244,7 +272,7 @@ class InvoicesController extends AppController
             $this->Flash->error(__('The product could not be deleted. Please, try again'));
         }
     }
-    public function editinvoice($id = null){
+    public function editinvoice($id = null, $editflag = null){
         $invoice = $this->Invoices->get($id, [
             'contain' => ['Users'],
         ]);
@@ -263,21 +291,23 @@ class InvoicesController extends AppController
         $products = $query->toArray();
 
         $session = $this->request->getSession();
-        $session->delete('Cart');  // Delete any existing 'Cart' session
-        $session->write('Cart', []);  // Initialize an empty 'Cart' session
-        foreach ($products as $product) {
-            $session_product = ['id' => $product->product->id, 'quantity' => $product->quantity];
-        
-            // Read current cart data
-            $cart = $session->read('Cart');
-        
-            // Append new product into cart data
-            $cart[] = $session_product;
+        if($editflag != 1){
+            $session->write('Cart', []);  // Initialize an empty 'Cart' session
+            foreach ($products as $product) {
+                $session_product = ['id' => $product->product->id, 'quantity' => $product->quantity];
             
-            // Update the session value
-            $session->write('Cart', $cart);
+                // Read current cart data
+                $cart = $session->read('Cart');
+            
+                // Append new product into cart data
+                $cart[] = $session_product;
+                
+                // Update the session value
+                $session->write('Cart', $cart);
+            }
         }
-        if ($this->request->is('post')) {
+        if ($this->request->is(['post', 'put'])) {
+            $this->SelectedProducts->deleteAll(['SelectedProducts.invoiceid' => $invoice->id]);
             // Read the current cart data
             $cart = $session->read('Cart');
             foreach($cart as $index => $product) {
@@ -287,17 +317,12 @@ class InvoicesController extends AppController
                 $invoice_product['quantity'] = $product['quantity'];
 
                 $temp = $this->SelectedProducts->save($invoice_product);
-                echo "<pre>";
-                var_dump($temp);
-                echo "</pre>";
-                //die;
 
                 if($temp){}else{
                     $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
                     return $this->redirect(['action' => 'index']);
                 }
             }
-
             $this->Flash->success(__('The invoice saved.'));
             $session->delete('Cart');
             return $this->redirect(['action' => 'index']);
