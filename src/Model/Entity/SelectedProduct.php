@@ -3,11 +3,11 @@ namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
-class InvoicedProduct extends Entity
+class SelectedProduct extends Entity
 {
     protected $_accessible = [
-        'invoiceid' => true,
-        'productid' => true,
+        'invoice_id' => true,
+        'product_id' => true,
         'quantity' => true,
     ];
 }

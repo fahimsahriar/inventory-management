@@ -25,7 +25,7 @@ class InvoicesController extends AppController
         $loggedInUser = $this->request->getSession()->read('Auth');
         $query = $this->Invoices->find('all', [
             'contain' => ['Users'],
-            'conditions' => ['Invoices.userid' => $loggedInUser['User']['id'], 'Invoices.deleted' => 0,],
+            'conditions' => ['Invoices.userid' => $loggedInUser['User']['id'], 'Invoices.deleted' => Configure::read('not_deleted')],
         ]);
         
         $invoices = $this->paginate($query, [
@@ -62,24 +62,24 @@ class InvoicesController extends AppController
                 // Read the current cart data
                 $cart = $session->read('Cart');
                 foreach($cart as $index => $product) {
-                    $invoice_product = $this->SelectedProducts->newEmptyEntity();
-                    $invoice_product['invoiceid'] = $lastInsertedId;
-                    $invoice_product['productid'] = $product['id'];
-                    $invoice_product['quantity'] = $product['quantity'];
+                    $invoiceProduct = $this->SelectedProducts->newEmptyEntity();
+                    $invoiceProduct['invoice_id'] = $lastInsertedId;
+                    $invoiceProduct['product_id'] = $product['id'];
+                    $invoiceProduct['quantity'] = $product['quantity'];
 
-                    if($this->SelectedProducts->save($invoice_product)){
-                        $processed_product = $this->Products->get($product['id']);
+                    if($this->SelectedProducts->save($invoiceProduct)){
+                        $processedProduct = $this->Products->get($product['id']);
                         // notification module
                         $notification = $this->Notifications->newEmptyEntity();
-                        $notification['previous_quantity'] = $processed_product['quantity'];
-                        $processed_product['quantity'] = $processed_product['quantity'] - $product['quantity'];
-                        $notification['current_quantity'] = $processed_product['quantity'];
+                        $notification['previous_quantity'] = $processedProduct['quantity'];
+                        $processedProduct['quantity'] = $processedProduct['quantity'] - $product['quantity'];
+                        $notification['current_quantity'] = $processedProduct['quantity'];
                         $notification['productid'] = $product['id'];
                         $notification['userid'] = $loggedInUser['id'];
                         $notification['description'] = 'Previous quantity was '.$notification['previous_quantity'].', and updated quantity is '.$notification['current_quantity'];
                         $notification['date_time'] = new \DateTime();
                         //updating product
-                        $this->Products->save($processed_product);
+                        $this->Products->save($processedProduct);
                         if ($this->Notifications->save($notification)) {
                         }else{
                             $this->Flash->error(__('The product quantity could not be updated. Please, try again.'));
@@ -102,7 +102,7 @@ class InvoicesController extends AppController
         $loggedInUser = $this->request->getSession()->read('Auth');
         $query = $this->Products->find('all', [
             'contain' => ['Categories'],
-            'conditions' => ['Products.deleted' => 0],
+            'conditions' => ['Products.deleted' => Configure::read('not_deleted')]
         ]);
         
         $products = $this->paginate($query, [
@@ -160,20 +160,20 @@ class InvoicesController extends AppController
             $productdata = $this->request->getData();
 
             // Modify 
-            $index_here = 0;
+            $indexTracker = 0;
             foreach($cart as $index => $product) {
-                if($index_here == $selected) {
+                if($indexTracker == $selected) {
                     $cart[$index]['quantity'] = $productdata['quantity'];
                     break;
                 }
-                $index_here++;
+                $indexTracker++;
             }
             $session->write('Cart', $cart);
             return $this->redirect(['action' => 'add']);
 
         }
     }
-    public function editcartforeditinginvoice($selected = null, $invoiceid = null)
+    public function editcartforeditinginvoice($selected = null, $invoiceId = null)
     {
         $session = $this->request->getSession();
         $cart = $session->read('Cart');
@@ -187,20 +187,20 @@ class InvoicesController extends AppController
             $productdata = $this->request->getData();
 
             // Modify 
-            $index_here = 0;
+            $indexTracker = 0;
             foreach($cart as $index => $product) {
-                if($index_here == $selected) {
+                if($indexTracker == $selected) {
                     $cart[$index]['quantity'] = $productdata['quantity'];
                     break;
                 }
-                $index_here++;
+                $indexTracker++;
             }
             $session->write('Cart', $cart);
-            return $this->redirect(['action' => 'editinvoice', $invoiceid, Configure::read('editflag')]);
+            return $this->redirect(['action' => 'editinvoice', $invoiceId, Configure::read('editflag')]);
 
         }
     }
-    public function remove($selected = null, $invoiceid = null)
+    public function remove($selected = null, $invoiceId = null)
     {
         $this->autoRender = false;
         $session = $this->request->getSession();
@@ -217,13 +217,13 @@ class InvoicesController extends AppController
             $cart = $session->read('Cart');
         
             // Loop through each product to find and remove
-            $index_here = 0;
+            $indexTracker = 0;
             foreach($cart as $index => $product) {
-                if($index_here == $selected) {
+                if($indexTracker == $selected) {
                     unset($cart[$index]); // Remove from the array
                     break;
                 }
-                $index_here++;
+                $indexTracker++;
             }
         
             //Re-index the array just in case
@@ -231,7 +231,7 @@ class InvoicesController extends AppController
             
             // Update the session value with the new cart
             $session->write('Cart', $cart);
-            return $this->redirect(['action' => 'editinvoice', $invoiceid, Configure::read('editflag')]);
+            return $this->redirect(['action' => 'editinvoice', $invoiceId, Configure::read('editflag')]);
 
         }
     }
@@ -243,7 +243,7 @@ class InvoicesController extends AppController
 
         $query = $this->SelectedProducts->find('all', [
             'contain' => ['Products'],
-            'conditions' => ['SelectedProducts.invoiceid' => $invoice->id],
+            'conditions' => ['SelectedProducts.invoice_id' => $invoice->id],
         ]);
         $products = $query->toArray();
 
@@ -287,7 +287,7 @@ class InvoicesController extends AppController
         //getting existing products in session
         $query = $this->SelectedProducts->find('all', [
             'contain' => ['Products'],
-            'conditions' => ['SelectedProducts.invoiceid' => $invoice->id],
+            'conditions' => ['SelectedProducts.invoice_id' => $invoice->id],
         ]);
         $products = $query->toArray();
 
@@ -308,43 +308,43 @@ class InvoicesController extends AppController
             }
         }
         if ($this->request->is(['post', 'put'])) {
-            $this->SelectedProducts->deleteAll(['SelectedProducts.invoiceid' => $invoice->id]);
+            $this->SelectedProducts->deleteAll(['SelectedProducts.invoice_id' => $invoice->id]);
             
-            $previous_quantity = [];
-            $updated_quantity = [];
+            $previousQuantity = [];
+            $updatedQuantity = [];
             foreach ($products as $product) {
-                $processed_product = $this->Products->get($product->product->id);
-                $previous_quantity[$processed_product['id']] = $processed_product['quantity'];
-                $processed_product['quantity'] = $processed_product['quantity'] + $product->quantity;
-                $this->Products->save($processed_product);
+                $processedProduct = $this->Products->get($product->product->id);
+                $previousQuantity[$processedProduct['id']] = $processedProduct['quantity'];
+                $processedProduct['quantity'] = $processedProduct['quantity'] + $product->quantity;
+                $this->Products->save($processedProduct);
             }
             // Read the current cart data
             $cart = $session->read('Cart');
             foreach($cart as $index => $product) {
                 $invoice_product = $this->SelectedProducts->newEmptyEntity();
-                $invoice_product['invoiceid'] = $invoice->id; //invoice id
-                $invoice_product['productid'] = $product['id'];
+                $invoice_product['invoice_id'] = $invoice->id; //invoice id
+                $invoice_product['product_id'] = $product['id'];
                 $invoice_product['quantity'] = $product['quantity'];
 
                 //product adjusting
-                $processed_product = $this->Products->get($product['id']);
-                $processed_product['quantity'] = $processed_product['quantity'] - $product['quantity'];
-                $saved_products = $this->Products->save($processed_product);
+                $processedProduct = $this->Products->get($product['id']);
+                $processed_product['quantity'] = $processedProduct['quantity'] - $product['quantity'];
+                $saved_products = $this->Products->save($processedProduct);
 
                 //notification update
-                $updated_quantity[$saved_products['id']] = $saved_products['quantity'];
+                $updatedQuantity[$saved_products['id']] = $saved_products['quantity'];
                 $notification = $this->Notifications->newEmptyEntity();
-                $notification['previous_quantity'] = $previous_quantity[$saved_products['id']];
-                $notification['current_quantity'] = $updated_quantity[$saved_products['id']];
+                $notification['previous_quantity'] = $previousQuantity[$saved_products['id']];
+                $notification['current_quantity'] = $updatedQuantity[$saved_products['id']];
                 $notification['productid'] = $saved_products['id'];
                 $notification['userid'] = $loggedInUser['User']['id'];
                 $notification['description'] = 'Previous quantity was '.$notification['previous_quantity'].', and updated quantity is '.$notification['current_quantity'];
                 $notification['date_time'] = new \DateTime();
                 $this->Notifications->save($notification);
 
-                $saved_selected_product = $this->SelectedProducts->save($invoice_product);
+                $savedSelectedProduct = $this->SelectedProducts->save($invoice_product);
 
-                if($saved_selected_product){}else{
+                if($savedSelectedProduct){}else{
                     $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
                     return $this->redirect(['action' => 'index']);
                 }
@@ -362,7 +362,7 @@ class InvoicesController extends AppController
     
         $query = $this->SelectedProducts->find('all', [
             'contain' => ['Products'],
-            'conditions' => ['SelectedProducts.invoiceid' => $id],
+            'conditions' => ['SelectedProducts.invoice_id' => $id],
         ]);
         $products = $query->toArray();
         $mailer = new \App\Mailer\InvoiceMailer();

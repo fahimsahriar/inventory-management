@@ -23,8 +23,11 @@ class ProductsController extends AppController
     {
         //category selection based on user
         $loggedInUser = $this->request->getSession()->read('Auth');
-        $query = $this->Products->Categories->find('list',[
-            'conditions' => ['deleted' => Configure::read('not_deleted'), 'userid' => $loggedInUser['User']['id']],
+        $query = $this->Categories->find('list',[
+            'conditions' => ['deleted' => Configure::read('not_deleted'),
+                            'userid' => $loggedInUser['User']['id'],
+                            'status' => 1,
+                            ],
         ]);
         $categories = $query->toArray();
         $this->set(compact('categories'));
@@ -85,8 +88,11 @@ class ProductsController extends AppController
     public function edit($id = null)
     {
         $loggedInUser = $this->request->getSession()->read('Auth');
-        $categories = $this->Products->Categories->find('list',[
-            'conditions' => ['deleted' => Configure::read('not_deleted'), 'userid' => $loggedInUser['User']['id']],
+        $categories = $this->Categories->find('list',[
+            'conditions' => ['deleted' => Configure::read('not_deleted'),
+                            'userid' => $loggedInUser['User']['id'],
+                            'status' => 1,
+                            ],
         ]);
         $this->set(compact('categories'));
 

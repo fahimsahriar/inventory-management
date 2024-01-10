@@ -234,4 +234,6 @@ Configure::write('deleted',1);
 Configure::write('not_deleted',0);
 Configure::write('unread',0);
 Configure::write('read',1);
+Configure::write('active',1);
+Configure::write('inactive',0);
 Configure::write('editflag',1);

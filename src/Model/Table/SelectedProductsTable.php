@@ -16,17 +16,17 @@ class SelectedProductsTable extends Table
             'foreignKey' => 'userid',
         ]);
         $this->belongsTo('Products', [
-            'foreignKey' => 'productid',
+            'foreignKey' => 'product_id',
         ]);
     }
 
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-                ->integer('invoiceid', 'The value must be an integer')
-                ->notEmpty('invoiceid')
-                ->integer('productid', 'The value must be an integer')
-                ->notEmpty('productid')
+                ->integer('invoice_id', 'The value must be an integer')
+                ->notEmpty('invoice_id')
+                ->integer('product_id', 'The value must be an integer')
+                ->notEmpty('product_id')
                 ->integer('quantity', 'The value must be an integer')
                 ->notEmpty('quantity');
         return $validator;
