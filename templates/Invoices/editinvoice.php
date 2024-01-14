@@ -20,37 +20,48 @@ $user_id = $session->read('userid');
                 <div class="add_products">
                     <?php
                         $session = $this->request->getSession();
-                        if ($session->check('Cart')) { 
-                            $cart = $session->read('Cart'); ?>
+                        if ($session->check('Cart2')) { 
+                            $cart2 = $session->read('Cart2');
+                            ?>
                                 <table>
                                     <thead>
-                                        <th>Added Products</th>
-                                        <th>Quantity</th>
+                                        <th><?= __('Added Products') ?></th>
+                                        <th><?= __('Quantity') ?></th>
                                         <th class="actions"><?= __('Actions') ?></th>
                                     </thead>
                                     <?php
                                     $counter = 0;
                                     $total_quantity = 0;
                                     $invoiceid = $invoice->id;
-                                     ?>
-                                    <?php foreach ($cart as $item) : ?>
+                                    echo "<pre>";
+                                    var_dump($cart2);
+                                    echo "</pre>";
+                                    ?>
+                                    
+                                    <?php foreach ($cart2 as $product_id => $quantity) : ?>
+                                    <?php
+                                    echo "<pre>";
+                                    var_dump($product_id);
+                                    var_dump($quantity);
+                                    echo "</pre>";
+                                    ?>
                                     <tbody>
                                         <td>
                                         <?php
-                                            $productitem = $product_table->get($item['id']);
+                                            $productitem = $product_table->get($product_id);
                                             echo $productitem['name'];
-                                            $total_quantity = $total_quantity + $item['quantity'];
+                                            $total_quantity = $total_quantity + (int)$quantity;
                                         ?>
                                         </td>
-                                        <td><?= $item['quantity'] ?></td>
+                                        <td><?php var_dump($quantity) ?></td>
                                         <td class="actions">
                                         <?php
-                                            echo $this->Form->postLink(__('Remove'), ['action' => 'remove', $counter,$invoiceid ], ['confirm' => __('Are you sure you want to remove?')]);
+                                            echo $this->Form->postLink(__('Remove'), ['action' => 'remove', $counter,$invoiceid ],
+                                            ['confirm' => __('Are you sure you want to remove?')]);
                                         ?>
-                                            <?= $this->Html->link(__('Edit'), ['action' => 'editcartforeditinginvoice', $counter, $invoiceid]) ?>
+                                        <?= $this->Html->link(__('Edit'), ['action' => 'editcartforeditinginvoice', $product_id, $invoiceid]) ?>
                                         </td>
                                     </tbody>  
-                                    <?php $counter++; ?> 
                                     <?php endforeach; ?>
                                     <tfoot>
                                         <td></td>

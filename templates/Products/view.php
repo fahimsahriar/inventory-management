@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="column-responsive column-80">
+    <div class="column-responsive">
         <div class="categories view content">
             <?= $this->Html->link(__('Back'), ['action' => 'index'], ['class' => 'button float-right']) ?>
             <h3>Name: <?= h($product->name) ?></h3>

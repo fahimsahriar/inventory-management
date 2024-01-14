@@ -176,8 +176,8 @@ class InvoicesController extends AppController
     public function editcartforeditinginvoice($selected = null, $invoiceId = null)
     {
         $session = $this->request->getSession();
-        $cart = $session->read('Cart');
-        $product = $this->Products->get($cart[$selected]['id'], [
+        $cart = $session->read('Cart2');
+        $product = $this->Products->get($selected, [
             'contain' => ['Categories'],
         ]);
         $this->set(compact('product'));
@@ -185,17 +185,8 @@ class InvoicesController extends AppController
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $productdata = $this->request->getData();
-
-            // Modify 
-            $indexTracker = 0;
-            foreach($cart as $index => $product) {
-                if($indexTracker == $selected) {
-                    $cart[$index]['quantity'] = $productdata['quantity'];
-                    break;
-                }
-                $indexTracker++;
-            }
-            $session->write('Cart', $cart);
+            $cart[$selected] = (int)$productdata["quantity"];
+            $session->write('Cart2', $cart);
             return $this->redirect(['action' => 'editinvoice', $invoiceId, Configure::read('editflag')]);
 
         }
@@ -220,7 +211,7 @@ class InvoicesController extends AppController
             $indexTracker = 0;
             foreach($cart as $index => $product) {
                 if($indexTracker == $selected) {
-                    unset($cart[$index]); // Remove from the array
+                    unset($cart[$index]); // Removing from the array
                     break;
                 }
                 $indexTracker++;
@@ -294,6 +285,7 @@ class InvoicesController extends AppController
         $session = $this->request->getSession();
         if($editflag != Configure::read('editflag')){
             $session->write('Cart', []);  // Initialize an empty 'Cart' session
+            $session->write('Cart2', []);
             foreach ($products as $product) {
                 $session_product = ['id' => $product->product->id, 'quantity' => $product->quantity];
             
@@ -305,6 +297,21 @@ class InvoicesController extends AppController
                 
                 // Update the session value
                 $session->write('Cart', $cart);
+            }
+
+            //new approach
+            foreach ($products as $product) {
+                $product_id = $product->product->id;
+                $quantity = $product->quantity;
+            
+                // Read current cart data
+                $cartt = $session->read('Cart2');
+            
+                // Update or add the product to the cart data
+                $cartt[$product_id] = $quantity;
+            
+                // Update the session value
+                $session->write('Cart2', $cartt);
             }
         }
         if ($this->request->is(['post', 'put'])) {
@@ -319,16 +326,16 @@ class InvoicesController extends AppController
                 $this->Products->save($processedProduct);
             }
             // Read the current cart data
-            $cart = $session->read('Cart');
-            foreach($cart as $index => $product) {
+            $cart = $session->read('Cart2');
+            foreach($cart as $product_id => $quantity) {
                 $invoice_product = $this->SelectedProducts->newEmptyEntity();
                 $invoice_product['invoice_id'] = $invoice->id; //invoice id
-                $invoice_product['product_id'] = $product['id'];
-                $invoice_product['quantity'] = $product['quantity'];
+                $invoice_product['product_id'] = $product_id;
+                $invoice_product['quantity'] = $quantity;
 
                 //product adjusting
-                $processedProduct = $this->Products->get($product['id']);
-                $processed_product['quantity'] = $processedProduct['quantity'] - $product['quantity'];
+                $processedProduct = $this->Products->get($product_id);
+                $processed_product['quantity'] = $processedProduct['quantity'] - $quantity;
                 $saved_products = $this->Products->save($processedProduct);
 
                 //notification update

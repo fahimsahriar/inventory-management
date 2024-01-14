@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="column-responsive column-80">
+    <div class="column-responsive">
         <div class="categories view content">
             <?= $this->Html->link(__('Back'), ['action' => 'add'], ['class' => 'button float-right']) ?>
             <h3><?= h($product->name) ?></h3>
@@ -19,7 +19,7 @@
             </table>
             <?php
             $session = $this->request->getSession();
-            $cart = $session->read('Cart');
+            $cart = $session->read('Cart2');
             ?>
             <?= $this->Form->create() ?>
                 <?= $this->Form->control('quantity', [
@@ -30,7 +30,7 @@
                         'step'=> 1,
                         'class'=> 'number-input',
                         'required'=> true,
-                        'value' => $cart[$selected]['quantity']
+                        'value' => $cart[$selected]
                 ]) ?>
                 <?= $this->Form->control('product_id', [
                         'type' => 'hidden',
