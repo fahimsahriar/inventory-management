@@ -20,13 +20,13 @@ if($loggedInUser){
                     <?php }
                 ?>
                 <a class="button" href="<?= $this->Url->build([
-                    'controller' => 'Products',
-                    'action' => 'index',
-                ]) ?>">Product List</a>
-                <a class="button" href="<?= $this->Url->build([
                     'controller' => 'Invoices',
                     'action' => 'index',
                 ]) ?>">Invoice List</a>
+                <a class="button" href="<?= $this->Url->build([
+                    'controller' => 'Products',
+                    'action' => 'index',
+                ]) ?>">Product List</a>
                 <a class="button" href="<?= $this->Url->build([
                     'controller' => 'Categories',
                     'action' => 'index',

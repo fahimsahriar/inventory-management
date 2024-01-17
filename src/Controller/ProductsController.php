@@ -23,10 +23,18 @@ class ProductsController extends AppController
     {
         //category selection based on user
         $loggedInUser = $this->request->getSession()->read('Auth');
-        $query = $this->Products->Categories->find('list',[
-            'conditions' => ['deleted' => Configure::read('not_deleted'), 'userid' => $loggedInUser['User']['id']],
+        $query = $this->Categories->find('list',[
+            'conditions' => ['deleted' => Configure::read('not_deleted'),
+                            'userid' => $loggedInUser['User']['id'],
+                            'status' => Configure::read('active'),
+                            ],
         ]);
         $categories = $query->toArray();
+        // Check if there are no active categories
+        if (empty($categories)) {
+            $this->Flash->error(__('No active categories available. Please create a category first.'));
+            return $this->redirect(['controller' => 'Categories', 'action' => 'index']);
+        }
         $this->set(compact('categories'));
 
         $product = $this->Products->newEmptyEntity();
@@ -53,7 +61,9 @@ class ProductsController extends AppController
         $loggedInUser = $this->request->getSession()->read('Auth');
         $query = $this->Products->find('all', [
             'contain' => ['Categories'],
-            'conditions' => ['Products.deleted' => 0, 'Products.userid' => $loggedInUser['User']['id']],
+            'conditions' => ['Products.deleted' => Configure::read('not_deleted'),
+                            'Products.userid' => $loggedInUser['User']['id']
+                            ],
         ]);
         
         $products = $this->paginate($query, [
@@ -85,8 +95,11 @@ class ProductsController extends AppController
     public function edit($id = null)
     {
         $loggedInUser = $this->request->getSession()->read('Auth');
-        $categories = $this->Products->Categories->find('list',[
-            'conditions' => ['deleted' => Configure::read('not_deleted'), 'userid' => $loggedInUser['User']['id']],
+        $categories = $this->Categories->find('list',[
+            'conditions' => ['deleted' => Configure::read('not_deleted'),
+                            'userid' => $loggedInUser['User']['id'],
+                            'status' => Configure::read('active'),
+                            ],
         ]);
         $this->set(compact('categories'));
 
@@ -143,7 +156,6 @@ class ProductsController extends AppController
         }
 
         $this->request->allowMethod(['post', 'delete']);
-        //$product = $this->Products->get($id);
         $product->deleted = Configure::read('deleted');
         if ($this->request->is(['patch', 'post', 'put'])) {
             if ($this->Products->save($product)) {

@@ -51,6 +51,7 @@ if($loggedInUser){
                     <i class="fa-regular fa-bell"></i>
                 </div>
                 <div id="dropdownMenu" class="dropdown-content">
+                    <?php $notifications = array_slice($notifications, 0, 5);?>
                     <?php foreach ($notifications as $notification) : ?>
                         <?= $this->Form->postLink(
                                     __($notification->product->name).__("'s quantity changed").__(". ").h($notification->description),

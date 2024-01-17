@@ -96,7 +96,7 @@ return [
             'port' => 465,
             'timeout' => 30,
             'username' => 'fahim.sahriar@sjinnovation.com',
-            'password' => 'Ve@29vl7VSv+YRW(JfW\~9t476rbl3',
+            'password' => 'rzE0ZEHs7lVm3@5i>tT0#hwh/L\#49OK6V7',
             'ssl' => true,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
         ]

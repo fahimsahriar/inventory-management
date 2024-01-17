@@ -8,7 +8,7 @@ use Cake\Core\Configure;
         <table>
             <thead>
                 <tr>
-                    <th><?= __('Time') ?></th>
+                    <th><?= $this->Paginator->sort('Time') ?></th>
                     <th><?= $this->Paginator->sort('Unread notifications') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
