@@ -60,6 +60,7 @@ return function (RouteBuilder $routes): void {
         $builder->connect('/categories', ['controller' => 'Categories', 'action' => 'index']);
         $builder->connect('/products', ['controller' => 'Products', 'action' => 'index']);
         $builder->connect('/notifications', ['controller' => 'Notifications', 'action' => 'index']);
+        $builder->connect('/invoices', ['controller' => 'Invoices', 'action' => 'index']);
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
