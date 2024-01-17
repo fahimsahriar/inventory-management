@@ -55,9 +55,26 @@ class NotificationsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             if ($this->Notifications->save($notification)) {
 
-                return $this->redirect(['controller'=>'Products', 'action' => 'view', $notification->productid]);
+                return $this->redirect(['action' => 'productview', $notification->productid]);
             }
             $this->Flash->error(__('The product could not be deleted. Please, try again'));
         }
+    }
+    public function productview($id = null)
+    {
+        $product = $this->Products->get($id, [
+            'contain' => ['Categories'],
+        ]);
+
+        //for notification
+        $loggedInUser = $this->request->getSession()->read('Auth');
+        $query = $this->Notifications->find('all', [
+            'contain' => ['Products'],
+            'conditions' => ['Notifications.productid' => $product->id],
+        ]);
+        $notifications = $query->toArray();
+
+        $this->set(compact('product'));
+        $this->set(compact('notifications'));
     }
 }

@@ -1,8 +1,7 @@
-<?php use Cake\Core\Configure; ?>
 <div class="row">
-    <div class="column-responsive">
+    <div class="column-responsive column-80">
         <div class="categories view content">
-            <?= $this->Html->link(__('Back'), ['action' => 'editinvoice', $invoiceId, Configure::read('editflag')], ['class' => 'button float-right']) ?>
+            <?= $this->Html->link(__('Back'), ['action' => 'products'], ['class' => 'button float-right']) ?>
             <h3><?= h($product->name) ?></h3>
             <table>
                 <tr>
@@ -18,10 +17,6 @@
                     <td><?= h($product->quantity) ?></td>
                 </tr>
             </table>
-            <?php
-            $session = $this->request->getSession();
-            $cart = $session->read('Cart2');
-            ?>
             <?= $this->Form->create() ?>
                 <?= $this->Form->control('quantity', [
                         'type' => 'number',
@@ -31,15 +26,13 @@
                         'step'=> 1,
                         'class'=> 'number-input',
                         'required'=> true,
-                        'value' => $cart[$selected]
                 ]) ?>
                 <?= $this->Form->control('product_id', [
                         'type' => 'hidden',
                         'value' => $product->id
                 ]) ?>
-                <?= $this->Form->button('Submit') ?>
+                <?= $this->Form->button('Add product') ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
 </div>
-                    

@@ -237,3 +237,4 @@ Configure::write('read',1);
 Configure::write('active',1);
 Configure::write('inactive',0);
 Configure::write('editflag',1);
+Configure::write('noteditflag',0);

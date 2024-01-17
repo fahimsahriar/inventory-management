@@ -8,7 +8,7 @@
             <thead>
                 <tr>
                     <th><?= __('Invoice id') ?></th>
-                    <th><?= __('User name') ?></th>
+                    <th><?= __('Name') ?></th>
                     <th><?= __('Email') ?></th>
                     <th><?= $this->Paginator->sort('Created at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>

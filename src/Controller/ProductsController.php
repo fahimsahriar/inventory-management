@@ -30,6 +30,11 @@ class ProductsController extends AppController
                             ],
         ]);
         $categories = $query->toArray();
+        // Check if there are no active categories
+        if (empty($categories)) {
+            $this->Flash->error(__('No active categories available. Please create a category first.'));
+            return $this->redirect(['controller' => 'Categories', 'action' => 'index']);
+        }
         $this->set(compact('categories'));
 
         $product = $this->Products->newEmptyEntity();

@@ -33,36 +33,35 @@ $user_id = $session->read('userid');
                                     $counter = 0;
                                     $total_quantity = 0;
                                     $invoiceid = $invoice->id;
-                                    echo "<pre>";
-                                    var_dump($cart2);
-                                    echo "</pre>";
                                     ?>
                                     
-                                    <?php foreach ($cart2 as $product_id => $quantity) : ?>
-                                    <?php
-                                    echo "<pre>";
-                                    var_dump($product_id);
-                                    var_dump($quantity);
-                                    echo "</pre>";
-                                    ?>
                                     <tbody>
-                                        <td>
-                                        <?php
-                                            $productitem = $product_table->get($product_id);
-                                            echo $productitem['name'];
-                                            $total_quantity = $total_quantity + (int)$quantity;
-                                        ?>
-                                        </td>
-                                        <td><?php var_dump($quantity) ?></td>
-                                        <td class="actions">
-                                        <?php
-                                            echo $this->Form->postLink(__('Remove'), ['action' => 'remove', $counter,$invoiceid ],
-                                            ['confirm' => __('Are you sure you want to remove?')]);
-                                        ?>
-                                        <?= $this->Html->link(__('Edit'), ['action' => 'editcartforeditinginvoice', $product_id, $invoiceid]) ?>
-                                        </td>
-                                    </tbody>  
-                                    <?php endforeach; ?>
+                                        <?php foreach ($cart2 as $product_id => $quantity) : ?>
+                                            <?php $total_quantity = $total_quantity + $quantity ?>
+                                            <tr>
+                                                <td>
+                                                    <?php
+                                                        $productitem = $product_table->get($product_id);
+                                                        echo $productitem['name'];
+                                                    ?>
+                                                </td>
+                                                <td><?php echo $quantity; ?></td>
+                                                <td class="actions">
+                                                    <div style="display: none;">
+                                                        <?= $this->Form->create(null, ['url' => ['action' => 'remove', $product_id, $invoiceid], 'style' => 'display: none;', 'id' => 'removeForm']); ?>
+                                                        <?= $this->Form->postLink(__('remove'), '#', ['confirm' => __('Are you sure you want to remove?'), 'onclick' => 'document.getElementById("removeForm").submit(); return false;']); ?>
+                                                        <?= $this->Form->end(); ?>
+                                                    </div>
+
+                                                    <?php
+                                                    echo $this->Form->postLink(__('Delete'), ['action' => 'remove', $product_id, $invoiceid],
+                                                    ['confirm' => __('Are you sure you want to delete # {0}?', $product_id)]);
+                                                    ?>
+                                                    <?= $this->Html->link(__('Edit'), ['action' => 'editcartforeditinginvoice', $product_id, $invoiceid]) ?>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
                                     <tfoot>
                                         <td></td>
                                         <th>Total: <?= $total_quantity ?></th>
@@ -71,7 +70,7 @@ $user_id = $session->read('userid');
                             </table>
                     <?php    }
                     ?>
-                    <?= $this->Html->link(__('Add Product'), ['action' => 'products'], ['class' => 'button invoice_add_product_btn']) ?>
+                    <?= $this->Html->link(__('Add Product'), ['action' => 'productsforexistinginvoice', $invoice->id], ['class' => 'button invoice_add_product_btn']) ?>
                 </div>
                 <?= $this->Form->button(__('Submit'), ['class' => 'button invoice_submission_btn']) ?>    
             <?= $this->Form->end() ?>
