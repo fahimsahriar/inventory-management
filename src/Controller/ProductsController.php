@@ -26,7 +26,7 @@ class ProductsController extends AppController
         $query = $this->Categories->find('list',[
             'conditions' => ['deleted' => Configure::read('not_deleted'),
                             'userid' => $loggedInUser['User']['id'],
-                            'status' => 1,
+                            'status' => Configure::read('active'),
                             ],
         ]);
         $categories = $query->toArray();
@@ -61,7 +61,9 @@ class ProductsController extends AppController
         $loggedInUser = $this->request->getSession()->read('Auth');
         $query = $this->Products->find('all', [
             'contain' => ['Categories'],
-            'conditions' => ['Products.deleted' => 0, 'Products.userid' => $loggedInUser['User']['id']],
+            'conditions' => ['Products.deleted' => Configure::read('not_deleted'),
+                            'Products.userid' => $loggedInUser['User']['id']
+                            ],
         ]);
         
         $products = $this->paginate($query, [
@@ -96,7 +98,7 @@ class ProductsController extends AppController
         $categories = $this->Categories->find('list',[
             'conditions' => ['deleted' => Configure::read('not_deleted'),
                             'userid' => $loggedInUser['User']['id'],
-                            'status' => 1,
+                            'status' => Configure::read('active'),
                             ],
         ]);
         $this->set(compact('categories'));

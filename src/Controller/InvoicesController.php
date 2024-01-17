@@ -20,7 +20,6 @@ class InvoicesController extends AppController
     {
         parent::beforeFilter($event);
     }
-
     public function index(){
         $loggedInUser = $this->request->getSession()->read('Auth');
         $query = $this->Invoices->find('all', [
