@@ -104,6 +104,16 @@ class InvoicesController extends AppController
             }
         }
     }
+    public function addnew()
+    {
+        $user_id = $this->Auth->user('id'); // get id of currently logged in user
+        $products = $this->Products->find('list', [
+            'keyField' => 'id', 
+            'valueField' => 'name',
+            'conditions' => ['userid' => $user_id] // add condition
+        ]);
+        $this->set(compact('products'));
+    }
     public function products(){
         $loggedInUser = $this->request->getSession()->read('Auth');
         $query = $this->Products->find('all', [
@@ -196,7 +206,7 @@ class InvoicesController extends AppController
 
         }
     }
-    public function addtocartforedit($id = null, $invoiceId)
+    public function addtocartforedit($id = null, $invoiceId = null)
     {
         $loggedInUser = $this->request->getSession()->read('Auth');
         $product = $this->Products->get($id, [
@@ -380,7 +390,6 @@ class InvoicesController extends AppController
                     // Row found, doing something with $previousSelectedProduct
                     $processedProduct['quantity'] = $processedProduct['quantity'] + $previousSelectedProduct['quantity'];
                     $previousQuantity[$processedProduct['id']] = $processedProduct['quantity'];
-                    var_dump($processedProduct);
                     $this->Products->save($processedProduct);
                 } else {
                     // No matching row found
@@ -450,4 +459,50 @@ class InvoicesController extends AppController
     
         return $this->redirect(['action' => 'index']);
     }    
+    public function getQuantity($id = null)
+    {
+        $this->autoRender = false; // We don't render a view in this case
+    
+        if($id) {
+            $product = $this->Products->get($id);
+            echo $product->quantity;
+        } else {
+            echo 'not found';
+        }
+    }
+    public function storeInSession()
+    {
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            //getting product information from the form
+            $productId = $this->request->getData('product_id');
+            $quantity = $this->request->getData('quantity');
+
+            $product = ['id' => $productId, 'quantity' => $quantity];
+
+            $session = $this->request->getSession();
+            // Check if 'Cart' session exists
+            if (!$session->check('Cart')) {
+                $session->write('Cart', []);  // Initialize an empty array if not existed yet
+            }
+        
+            // Read current cart data
+            $cart = $session->read('Cart');
+        
+            // Append new product into cart data
+            $cart[] = $product;
+            
+            // Update the session value
+            $session->write('Cart', $cart);
+
+            return $this->redirect(['action' => 'add', Configure::read('editflag')]);
+
+        }
+        // if ($this->request->is('post')) {
+        //     $productId = $this->request->getData('product_id');
+        //     $quantity = $this->request->getData('quantity');
+            
+        //     // store in session
+        //     $this->request->getSession()->write('Product.' . $productId, $quantity);
+        // }
+    }
 }
