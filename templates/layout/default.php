@@ -90,5 +90,6 @@ if($loggedInUser){
 </body>
 <script src="https://kit.fontawesome.com/5a02838b79.js" crossorigin="anonymous"></script>
 <?= $this->Html->script("notification_toggle.js") ?>
+<?= $this->Html->script("invoice_creation.js") ?>
 
 </html>

@@ -36,81 +36,21 @@ class InvoicesController extends AppController
         $this->set(compact('userData'));
     }
     public function add($editflag = null){
-        $invoice = $this->Invoices->newEmptyEntity();
-        $loggedInUser = $this->request->getSession()->read('Auth');
-        $loggedInUser = $loggedInUser['User'];
-        $this->set(compact('loggedInUser'));
-        $this->set(compact('invoice'));
-
-        $session = $this->request->getSession();
-        $session->write('email', $loggedInUser['email']);
-        $session->write('userid', $loggedInUser['id']);
-
-
-        if($editflag != Configure::read('editflag')){
-            $session->write('Cart', []);
-        }
-
-        $invoice['email'] = $loggedInUser['email'];
-        $invoice['userid'] = $loggedInUser['id'];
-        $invoice['created_at'] = new \DateTime();
-
-        if ($this->request->is('post')) {
-            // Check if the session is empty
-            if (empty($session->read('Cart'))) {
-                $this->Flash->error(__('Your shopping cart is empty. Please add products before creating an invoice.'));
-                return $this->redirect(['action' => 'add']);
-            }
-            $entity = $this->Invoices->save($invoice);
-            if ($entity) {
-                $lastInsertedId = $entity->id;
-                $session = $this->request->getSession();
-                // Read the current cart data
-                $cart = $session->read('Cart');
-                foreach($cart as $index => $product) {
-                    $invoiceProduct = $this->SelectedProducts->newEmptyEntity();
-                    $invoiceProduct['invoice_id'] = $lastInsertedId;
-                    $invoiceProduct['product_id'] = $product['id'];
-                    $invoiceProduct['quantity'] = $product['quantity'];
-
-                    if($this->SelectedProducts->save($invoiceProduct)){
-                        $processedProduct = $this->Products->get($product['id']);
-                        // notification module
-                        $notification = $this->Notifications->newEmptyEntity();
-                        $notification['previous_quantity'] = $processedProduct['quantity'];
-                        $processedProduct['quantity'] = $processedProduct['quantity'] - $product['quantity'];
-                        $notification['current_quantity'] = $processedProduct['quantity'];
-                        $notification['productid'] = $product['id'];
-                        $notification['userid'] = $loggedInUser['id'];
-                        $notification['description'] = 'Previous quantity was '.$notification['previous_quantity'].', and updated quantity is '.$notification['current_quantity'];
-                        $notification['date_time'] = new \DateTime();
-                        //updating product
-                        $this->Products->save($processedProduct);
-                        if ($this->Notifications->save($notification)) {
-                        }else{
-                            $this->Flash->error(__('The product quantity could not be updated. Please, try again.'));
-                        }
-                    }else{
-                        $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
-                        return $this->redirect(['action' => 'index']);
-                    }
-                }
-
-                $this->Flash->success(__('The invoice saved.'));
-                $session->delete('Cart');
-                return $this->redirect(['action' => 'index']);
-            }else{
-                $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
-            }
-        }
-    }
-    public function addnew()
-    {
-        $user_id = $this->Auth->user('id'); // get id of currently logged in user
+        $loggedInUser = $this->request->getSession()->read('Auth'); // get id of currently logged in user
         $products = $this->Products->find('list', [
             'keyField' => 'id', 
             'valueField' => 'name',
-            'conditions' => ['userid' => $user_id] // add condition
+            'conditions' => ['userid' => (int)$loggedInUser['User']['id'], 'Products.status' => Configure::read('active')] // add condition
+        ]);
+        $this->set(compact('products'));
+    }
+    public function addnew()
+    {
+        $loggedInUser = $this->request->getSession()->read('Auth'); // get id of currently logged in user
+        $products = $this->Products->find('list', [
+            'keyField' => 'id', 
+            'valueField' => 'name',
+            'conditions' => ['userid' => (int)$loggedInUser['User']['id'], 'Products.status' => Configure::read('active')] // add condition
         ]);
         $this->set(compact('products'));
     }
@@ -504,5 +444,86 @@ class InvoicesController extends AppController
         //     // store in session
         //     $this->request->getSession()->write('Product.' . $productId, $quantity);
         // }
+    }
+
+    public function show(){
+        $this->autoRender = false;
+        $products = json_decode($this->request->getData('products'), true);
+        var_dump($products);
+        var_dump($this->request->getData('products'));
+    }
+    public function addnewtwo(){
+        $user_id = $this->Auth->user('id'); // get id of currently logged in user
+        $products = $this->Products->find('list', [
+            'keyField' => 'id', 
+            'valueField' => 'name',
+            'conditions' => ['userid' => $user_id] // add condition
+        ]);
+        $this->set(compact('products'));
+    }
+    public function makeInvoice()
+    {
+        $this->autoRender = false;
+        $inputArray = $this->request->getData();
+        $outputArray = array();
+
+        for($i = 0; $i < count($inputArray["product_id"]); $i++){
+            $outputArray[] = array(
+                "id" => (string) $inputArray["product_id"][$i],
+                "quantity" => (string) $inputArray["quantity"][$i]
+            );
+        }
+
+        $data = $outputArray;
+
+        //saving the invoice
+        $loggedInUser = $this->request->getSession()->read('Auth');
+        $loggedInUser = $loggedInUser['User'];
+        
+        $invoice = $this->Invoices->newEmptyEntity();
+        $invoice['email'] = $loggedInUser['email'];
+        $invoice['userid'] = $loggedInUser['id'];
+        $invoice['created_at'] = new \DateTime();
+
+        $entity = $this->Invoices->save($invoice);
+        if ($entity) {
+            $lastInsertedId = $entity->id;
+            foreach($data as $index => $product) {
+                $invoiceProduct = $this->SelectedProducts->newEmptyEntity();
+                $invoiceProduct['invoice_id'] = $lastInsertedId;
+                $invoiceProduct['product_id'] = $product['id'];
+                $invoiceProduct['quantity'] = $product['quantity'];
+    
+                if($this->SelectedProducts->save($invoiceProduct)){
+                    $processedProduct = $this->Products->get($product['id']);
+                    // notification module
+                    $notification = $this->Notifications->newEmptyEntity();
+                    $notification['previous_quantity'] = $processedProduct['quantity'];
+                    $processedProduct['quantity'] = $processedProduct['quantity'] - $product['quantity'];
+                    $notification['current_quantity'] = $processedProduct['quantity'];
+                    $notification['productid'] = $product['id'];
+                    $notification['userid'] = $loggedInUser['id'];
+                    $notification['description'] = 'Previous quantity was '.$notification['previous_quantity'].', and updated quantity is '.$notification['current_quantity'];
+                    $notification['date_time'] = new \DateTime();
+                    //updating product
+                    $this->Products->save($processedProduct);
+                    if ($this->Notifications->save($notification)) {
+                    }else{
+                        $this->Flash->error(__('The product quantity could not be updated. Please, try again.'));
+                    }
+                }else{
+                    $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
+                    return $this->redirect(['action' => 'index']);
+                }
+            }
+    
+            $this->Flash->success(__('The invoice saved.'));
+            return $this->redirect(['action' => 'index']);
+        }else{
+            $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
+        }
+
+        $this->set(compact('data'));
+        $this->render('new_page');
     }
 }
