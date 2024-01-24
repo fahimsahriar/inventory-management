@@ -1,4 +1,7 @@
-<?php use Cake\Core\Configure; ?>
+<?php use Cake\Core\Configure;
+$session = $this->request->getSession();
+$cart = $session->read('Cart2');
+?>
 <div class="row">
     <div class="column-responsive">
         <div class="categories view content">
@@ -15,19 +18,15 @@
                 </tr>
                 <tr>
                     <th><?= __('Stock') ?></th>
-                    <td><?= h($product->quantity) ?></td>
+                    <td><?= h($product->quantity + (int)$cart[$selected]) ?></td>
                 </tr>
             </table>
-            <?php
-            $session = $this->request->getSession();
-            $cart = $session->read('Cart2');
-            ?>
             <?= $this->Form->create() ?>
                 <?= $this->Form->control('quantity', [
                         'type' => 'number',
                         'label' => 'Enter a quantity:',
                         'min' => 1,
-                        'max' => $product->quantity,
+                        'max' => (int)$product->quantity + (int)$cart[$selected],
                         'step'=> 1,
                         'class'=> 'number-input',
                         'required'=> true,

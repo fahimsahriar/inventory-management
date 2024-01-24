@@ -25,6 +25,7 @@ $(document).ready(function() {
             type: "get",
             success: function(response) {
                 productDropdown.closest('.form-group').find('.product_quantity').attr('max', response);
+                updateSubmitButton();
             },
         });
     };
@@ -55,7 +56,7 @@ $(document).ready(function() {
     const updateSubmitButton = () => {
         // Iterate over each input with the class .product_quantity
         let iii = 0;
-        let valid = false;
+        let valid = true;
         $('.product_quantity').each(function() {
             if(iii==0){
                 iii++;
@@ -68,6 +69,18 @@ $(document).ready(function() {
                     return;
                 }
                 if(parseInt(value)>parseInt(maxvalue)){
+                    valid = false;
+                    console.log("making it wrong");
+                }
+            }
+        });
+        let index_tracker = 0;
+        $('.product_id').each(function(i, obj) {
+            if(index_tracker==0){
+                index_tracker++;
+            }else{
+                if($(this).val() === ''){
+                    console.log("wrong");
                     valid = false;
                 }
             }
