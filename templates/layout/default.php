@@ -27,6 +27,8 @@ if($loggedInUser){
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    <!-- src/Template/Layout/default.ctp -->
+    <?= $this->Html->script('https://code.jquery.com/jquery-3.6.0.min.js') ?>
 </head>
 
 <body>
@@ -88,4 +90,6 @@ if($loggedInUser){
 </body>
 <script src="https://kit.fontawesome.com/5a02838b79.js" crossorigin="anonymous"></script>
 <?= $this->Html->script("notification_toggle.js") ?>
+<?= $this->Html->script("invoice_creation.js") ?>
+
 </html>

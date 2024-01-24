@@ -303,3 +303,6 @@ cursor: pointer;
 .invoice_add_product_btn{
     margin-top: 20px;
 }
+.heading_inline{
+    display: inline;
+}

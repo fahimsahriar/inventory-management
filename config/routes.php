@@ -49,6 +49,13 @@ return function (RouteBuilder $routes): void {
      */
     $routes->setRouteClass(DashedRoute::class);
 
+    //this code for ajax
+    $routes->connect('/invoices/get-quantity/:id', 
+                 ['controller' => 'Invoices', 'action' => 'getQuantity'],
+                 ['pass' => ['id'], '_name' => 'get_quantity']);
+    $routes->connect('/invoices/storeInSession', 
+                 ['controller' => 'Invoices', 'action' => 'storeInSession'],['_name' => 'store_in_session']);
+
     $routes->scope('/', function (RouteBuilder $builder): void {
         /*
          * Here, we are connecting '/' (base path) to a controller called 'Pages',
@@ -61,6 +68,7 @@ return function (RouteBuilder $routes): void {
         $builder->connect('/products', ['controller' => 'Products', 'action' => 'index']);
         $builder->connect('/notifications', ['controller' => 'Notifications', 'action' => 'index']);
         $builder->connect('/invoices', ['controller' => 'Invoices', 'action' => 'index']);
+        
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
