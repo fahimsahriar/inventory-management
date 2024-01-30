@@ -1,8 +1,12 @@
+<?php 
+$tempDelete = $this->request->getSession()->read('tempDelete');
+$cart = $this->request->getSession()->read('Cart2');
+?>
 <div class="categories index content">
     <div class="add_button_div">
         <?= $this->Html->link(__('Invoice list'), ['action' => 'index'], ['class' => 'button button-outline float-right']) ?>
     </div>
-    <h3><?= __('Products') ?></h3>
+    <h3><?= __('Add products') ?></h3>
     <div class="table-responsive">
         <table>
             <thead>
@@ -17,17 +21,21 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-
-                                        use Cake\Controller\Controller;
-
- foreach ($products as $product) : ?>
+                <?php foreach ($products as $product) : ?>
                     <tr>
                         <td><?= $this->Number->format($product->id) ?></td>
                         <td><?= h($product->name) ?></td>
                         <td><?= h($product->description) ?></td>
                         <td><?= h($product->category->name) ?></td>
-                        <td><?= h($product->quantity) ?></td>
+                        <td><?php 
+                        if(isset($tempDelete[$product->id])){
+                            echo h($product->quantity)+$tempDelete[$product->id];
+                        }elseif(isset($cart[$product->id])){
+                            echo h($product->quantity)+$cart[$product->id];
+                        }else{
+                            echo h($product->quantity);
+                        }
+                        ?></td>
                         <td><?= (($product->status == 1) ? __('Active') : __('Inactive')) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('Add product'), ['action' => 'addtocartforedit', $product->id, $invoiceId]) ?>

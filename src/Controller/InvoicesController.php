@@ -210,6 +210,7 @@ class InvoicesController extends AppController
     }
     public function remove($product_id = null, $invoiceId = null)
     {
+        //This function works at editInvoice controller's delete product button
         $this->autoRender = false;
         $session = $this->request->getSession();
 
@@ -221,6 +222,23 @@ class InvoicesController extends AppController
 
             // Check if the product ID exists in the cart
             if (isset($cart[$product_id])) {
+
+                 // define a product id-value pair
+                $productInfo = ['productId' => $product_id, 'productQuantity' => $cart[$product_id]];
+
+                // check if 'tempDelete' session exists
+                if (!$this->request->getSession()->check('tempDelete')) {
+                    // if 'tempDelete' session does not exist, initialize it
+                    $this->request->getSession()->write('tempDelete', []);
+                }
+
+                // write the product info into 'tempDelete' session
+                $tempDelete = $this->request->getSession()->read('tempDelete');
+                $tempDelete[$productInfo['productId']] = $productInfo['productQuantity'];
+
+                // update the session
+                $this->request->getSession()->write('tempDelete', $tempDelete);
+
                 // Unset the product from the cart data
                 unset($cart[$product_id]);
 
@@ -308,7 +326,12 @@ class InvoicesController extends AppController
                 // Update the session value
                 $session->write('Cart2', $cart);
             }
+
+            $this->request->getSession()->delete('tempDelete');
         }
+        //End: getting existing products in session
+
+        //If the submit button is pressed after editing invoice
         if ($this->request->is(['post', 'put'])) {
             $previousQuantity = [];
             $updatedQuantity = [];
@@ -445,7 +468,6 @@ class InvoicesController extends AppController
         //     $this->request->getSession()->write('Product.' . $productId, $quantity);
         // }
     }
-
     public function show(){
         $this->autoRender = false;
         $products = json_decode($this->request->getData('products'), true);

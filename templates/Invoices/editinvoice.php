@@ -12,14 +12,13 @@ $user_id = $session->read('userid');
                 echo $this->Html->link(__('Back'), ['action' => 'index'], ['class' => 'button float-right']);
             ?>
             <?= $this->Form->create(null) ?>
-                <legend><?= __('Create invoice') ?></legend>
+                <legend><?= __('Edit invoice') ?></legend>
                 <div class="table-responsive">
                     <p>Name: <?= $invoice->user->name ?></p>
                     <p>Email: <?= $invoice->email ?></p>
                 </div>
                 <div class="add_products">
                     <?php
-                        $session = $this->request->getSession();
                         if ($session->check('Cart2')) { 
                             $cart2 = $session->read('Cart2');
                             ?>
@@ -72,7 +71,14 @@ $user_id = $session->read('userid');
                     ?>
                     <?= $this->Html->link(__('Add Product'), ['action' => 'productsforexistinginvoice', $invoice->id], ['class' => 'button invoice_add_product_btn']) ?>
                 </div>
-                <?= $this->Form->button(__('Submit'), ['class' => 'button invoice_submission_btn']) ?>    
+                <?php
+                if ($session->check('Cart2')) {
+                    $cart2 = $session->read('Cart2');
+                    if(count($cart2)){
+                        echo $this->Form->button(__('Submit'), ['class' => 'button invoice_submission_btn']);
+                    }
+                }
+                ?>  
             <?= $this->Form->end() ?>
         </div>
     </div>
