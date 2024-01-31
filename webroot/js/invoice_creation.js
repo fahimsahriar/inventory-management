@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    let c = 0;
+    console.log('Invoice ID:', invoiceid);
     // Disable options in all other dropdowns that are currently selected
     const refreshProductOptions = function() {
         // Enable all options first
@@ -13,21 +13,45 @@ $(document).ready(function() {
             if (selectedValue != "") {
                 $(".product_id").not(currentDropdown).find('option[value=' + selectedValue + ']').prop('disabled', true);
             }
+
+            console.log("called");
+            // get the closest ancestor form-group 
+            var formGroup = $(this).closest('.form-group');
+            // then find the quantity within that form-group
+            var quantityField = formGroup.find('.product_quantity');
+            // get the value of the quantity field
+            var quantity = quantityField.val();
+            updateMaxQuantity($(this), quantity);
         });
     }
-    const updateMaxQuantity = (productDropdown) => {
+    const updateMaxQuantity = (productDropdown, quantity) => {
+        console.log(quantity);
         const product_id = productDropdown.val();
         const baseUrl = window.location.protocol + "//" + window.location.host + "/updated_cms"
 
-        // AJAX request
-        $.ajax({
+        console.log('Product ID:', product_id);
+        console.log('Invoice ID:', invoiceid);
+
+        let request1 = $.ajax({
             url: `${baseUrl}/invoices/get_quantity/${product_id}`,
             type: "get",
-            success: function(response) {
-                productDropdown.closest('.form-group').find('.product_quantity').attr('max', response);
-                updateSubmitButton();
-            },
         });
+    
+        let request2 = $.ajax({
+            url: `${baseUrl}/invoices/getInvoicedQuantity/${product_id}/${invoiceid}`,
+            type: "get",
+        });
+        if(product_id && invoiceid){
+            // Use jQuery's when method to run code after both requests have completed
+            $.when(request1, request2).done(function(response1, response2) {
+                // response1 and response2 contain the responses from each ajax request
+                let stock = parseInt(response1[0]);
+                let quantity = parseInt(response2[0]);
+
+                productDropdown.closest('.form-group').find('.product_quantity').attr('max', parseInt(stock) + parseInt(quantity));
+
+            });
+        }
     };
 
     let checkQuantity = (quantityInput) => {
@@ -87,17 +111,21 @@ $(document).ready(function() {
         });
         $('#submit').prop('disabled', !valid);
     }
-
+    refreshProductOptions();
     // when 'Add More Products' button is clicked
     $("#add_more_products").click(function() {
         console.log("adding more product");
         updateSubmitButton(); // Update on page load
-        var $template = $("#product-template").clone().removeAttr('id').show(); // Clone the template and remove its id
-        $("#product-section").append($template); // Append the cloned template to the product section
+        var $template = $("#product-template").clone().attr('id', 'product-section').show();
+        //var $template = $("#product-template").clone().removeAttr('id').show(); // Clone the template and remove its id
+        $("#product-container").append($template); // Append the cloned template to the product section
 
         refreshProductOptions(); // refresh the product options
     });
-    $('#product-section').on('click', '.remove-product', function() {
+
+
+    // when 'Remove product' button is clicked
+    $(document).on('click', '.remove-product', function() {
         $(this).parent().remove(); // Remove the parent product section of the clicked remove button
         refreshProductOptions(); // Call to refresh product options, to ensure consistency
     });
@@ -105,7 +133,15 @@ $(document).ready(function() {
     updateSubmitButton(); // Update on page load
     // Call refreshProductOptions when the product changes
     $(document).on("change", ".product_id", function() {
-        updateMaxQuantity($(this));
+        console.log("called");
+        // get the closest ancestor form-group 
+        var formGroup = $(this).closest('.form-group');
+        // then find the quantity within that form-group
+        var quantityField = formGroup.find('.product_quantity');
+        // get the value of the quantity field
+        var quantity = quantityField.val();
+        console.log(quantity);
+        updateMaxQuantity($(this), quantity);
         refreshProductOptions();
         updateSubmitButton(); // Update on page load
     });

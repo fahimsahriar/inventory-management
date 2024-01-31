@@ -433,6 +433,19 @@ class InvoicesController extends AppController
             echo 'not found';
         }
     }
+    public function getInvoicedQuantity($id = null, $invoiceid = null)
+    {
+        //for ajax rquest in edit invoice feature
+        $this->autoRender = false; // We don't render a view in this case
+        $selectedProductData = $this->SelectedProducts->find()
+        ->where(['product_id' => $id, 'invoice_id' => $invoiceid])
+        ->first();
+        if($selectedProductData){
+            echo $selectedProductData->quantity;
+        }else{
+            echo 0;
+        }
+    }
     public function storeInSession()
     {
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -547,5 +560,60 @@ class InvoicesController extends AppController
 
         $this->set(compact('data'));
         $this->render('new_page');
+    }
+    public function editinvoice2($invoiceid = null){
+        $id = $invoiceid;
+        try {
+            $invoice = $this->Invoices->get($id, [
+                'contain' => ['Users'],
+            ]);
+        } catch (\Cake\Datasource\Exception\RecordNotFoundException $e) {
+            $this->Flash->error(__('No invoice found.'));
+            return $this->redirect(['action' => 'index']);
+        }
+
+        //User verification
+        $loggedInUser = $this->request->getSession()->read('Auth');
+        if($loggedInUser['User']['id'] != $invoice['userid']){
+            $this->Flash->error(__('You are not permited to edit'));
+            return $this->redirect(['action' => 'index']);
+        }
+
+        //getting existing products for this invoice id
+        $selected_products = $this->SelectedProducts->find('all', [
+            'contain' => ['Products'],
+            'conditions' => ['SelectedProducts.invoice_id' => $id],
+        ])->toArray();
+        
+        //all products
+        $products = $this->Products->find('list', [
+            'keyField' => 'id', 
+            'valueField' => 'name',
+            'conditions' => [
+                'userid' => (int)$loggedInUser['User']['id'],
+                'Products.status' => Configure::read('active')
+            ]
+        ]);
+
+        $this->set(compact('invoiceid', 'selected_products', 'products'));
+    }
+    public function editInvoiceFormSubmission()
+    {
+        $this->autoRender = false;
+        $inputArray = $this->request->getData();
+        $outputArray = array();
+        $outputArray = array();
+
+        for($i = 0; $i < count($inputArray["product_id"]); $i++){
+            $outputArray[] = array(
+                "id" => (string) $inputArray["product_id"][$i],
+                "quantity" => (string) $inputArray["quantity"][$i]
+            );
+        }
+
+        $data = $outputArray;
+        dd($data);
+
+        
     }
 }
