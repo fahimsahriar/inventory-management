@@ -7,7 +7,7 @@
         <div class="form-group">
             <?= $this->Form->control('product_id[]', ['options' => $products, 'empty' => 'Select a product', 'class'  => 'product_id', 'label' => '']) ?>
             <!-- Quantity -->
-            <?= $this->Form->number('quantity[]', ['min' => 0, 'class' => 'product_quantity', 'placeholder' => 'Quantity']) ?>
+            <?= $this->Form->number('quantity[]', ['min' > 0, 'class' => 'product_quantity', 'placeholder' => 'Quantity']) ?>
             <div class="quantity_warning" style="display:none;color:red;">The quantity entered is greater than available stock.</div>
         </div>
         <div class="quantity_warning" style="display:none;color:red;">The quantity entered is greater than available stock.</div>
@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<?= $this->Form->create(null, ['url' => ['controller' => 'invoices', 'action' => 'editInvoiceFormSubmission']]) ?>
+<?= $this->Form->create(null) ?>
 <div id="product-container">
 <?php foreach ($selected_products as $index => $selected_product): ?>
     <div id="product-section">

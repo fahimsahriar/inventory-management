@@ -33,3 +33,6 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    var invoiceid = "<?php echo null; ?>";
+</script>

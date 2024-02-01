@@ -255,10 +255,15 @@ class InvoicesController extends AppController
     }
     public function view($id = null)
     {
+        $loggedInUser = $this->request->getSession()->read('Auth');
         $invoice = $this->Invoices->get($id, [
             'contain' => ['Users'],
+            'conditions' => ['Invoices.userid' => $loggedInUser['User']['id'], 'Invoices.deleted' =>     Configure::read('not_deleted')],
         ]);
-
+        if(!$invoice){
+            $this->Flash->success(__('The invoice not found.'));
+            return $this->redirect(['action' => 'index']);
+        }
         $query = $this->SelectedProducts->find('all', [
             'contain' => ['Products'],
             'conditions' => ['SelectedProducts.invoice_id' => $invoice->id],
@@ -596,12 +601,100 @@ class InvoicesController extends AppController
         ]);
 
         $this->set(compact('invoiceid', 'selected_products', 'products'));
+
+        //editing form submission
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            
+            $inputArray = $this->request->getData();
+            if(!count($inputArray)){
+                $this->Flash->error(__('Empty Invoice. The invoice could not be saved.'));
+                return $this->redirect(['action' => 'view', $invoiceid]);
+            }
+            $outputArray = array();
+    
+            for($i = 0; $i < count($inputArray["product_id"]); $i++){
+                $outputArray[] = array(
+                    "id" => (string) $inputArray["product_id"][$i],
+                    "quantity" => (string) $inputArray["quantity"][$i]
+                );
+            }
+
+            //adjusting product quantity with old selected product
+            foreach ($selected_products as $selected_product) {
+                $product = $this->Products->get($selected_product->product_id);
+                $product["quantity"] = $product["quantity"] + $selected_product["quantity"];
+                $this->Products->save($product);
+                $this->SelectedProducts->delete($selected_product);
+            }
+
+            foreach ($outputArray as $item) {
+                echo $item['id'], " " ,$item['quantity'], "\n";
+                $id = $item['id'];
+                $product = $this->Products->get($id);
+                $previous_quantity = (int)$product->quantity;
+                $current_qunantity = $previous_quantity - (int)$item['quantity'];
+
+                $invoiceProduct = $this->SelectedProducts->newEmptyEntity();
+                $invoiceProduct['invoice_id'] = (int)$invoiceid;
+                $invoiceProduct['product_id'] = (int)$item['id'];
+                $invoiceProduct['quantity'] = (int)$item['quantity'];
+
+                //product adjusting
+                $product = $this->Products->get((int)$item['id']);
+                $product["quantity"] = $product["quantity"] - $invoiceProduct['quantity'];
+
+                if($this->Products->save($product) && $this->SelectedProducts->save($invoiceProduct)){
+                }else{
+                    $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
+                    return $this->redirect(['action' => 'view', $invoiceid]);
+                }
+
+                // if($this->SelectedProducts->save($invoiceProduct)){
+                //     $this->Flash->success(__('Invoiced Saved.'));
+                //     return $this->redirect(['action' => 'view', $invoiceid]);
+                // }else{
+                //     $this->Flash->error(__('Invoice editing failed.'));
+                //     return $this->redirect(['action' => 'index']);
+                // }
+
+                // $current_qunantity = $previous_quantity - (int)$item['quantity'];
+
+                // $invoiceProduct = $this->SelectedProducts->newEmptyEntity();
+
+                // $invoiceProduct['invoice_id'] = $invoiceid;
+                // $invoiceProduct['product_id'] = $item['id'];
+                // $invoiceProduct['quantity'] = $item['quantity'];
+
+                // if($this->SelectedProducts->save($invoiceProduct)){
+                //     // notification module
+                //     $notification = $this->Notifications->newEmptyEntity();
+                //     $notification['previous_quantity'] = $previous_quantity;
+                //     $notification['current_quantity'] = $current_qunantity;
+                //     $notification['productid'] = $product['id'];
+                //     $notification['userid'] = $loggedInUser['User']['id'];
+                //     $notification['description'] = 'Previous quantity was '.$notification['previous_quantity'].', and updated quantity is '.$notification['current_quantity'];
+                //     $notification['date_time'] = new \DateTime();
+                //     //updating product
+                //     $product['quantity'] = $current_qunantity;
+                //     $this->Products->save($product);
+                //     if ($this->Notifications->save($notification)) {
+                //     }else{
+                //         $this->Flash->error(__('The product quantity could not be updated. Please, try again.'));
+                //     }
+                //     return $this->redirect(['action' => 'view', $invoiceid]);
+                // }else{
+                //     $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
+                //     return $this->redirect(['action' => 'view', $invoiceid]);
+                // }
+            } 
+            $this->Flash->success(__('The invoice saved.'));
+            return $this->redirect(['action' => 'view', $invoiceid]);
+        }
     }
     public function editInvoiceFormSubmission()
     {
         $this->autoRender = false;
         $inputArray = $this->request->getData();
-        $outputArray = array();
         $outputArray = array();
 
         for($i = 0; $i < count($inputArray["product_id"]); $i++){
@@ -611,9 +704,15 @@ class InvoicesController extends AppController
             );
         }
 
-        $data = $outputArray;
-        dd($data);
-
-        
+        foreach ($outputArray as $item) {
+            //echo $item['id'], $item['quantity'], "\n";
+            $id = $item['id'];
+            $product = $this->Products->get($id);
+            $previous_quantity = $product->quantity;
+            $current_qunantity = $item['quantity'];
+            echo "previous:", $previous_quantity, " ";
+            echo "current:", $current_qunantity, " ";
+            echo "\n";
+        }    
     }
 }

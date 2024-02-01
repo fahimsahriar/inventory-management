@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    console.log('Invoice ID:', invoiceid);
     // Disable options in all other dropdowns that are currently selected
     const refreshProductOptions = function() {
         // Enable all options first
@@ -14,7 +13,6 @@ $(document).ready(function() {
                 $(".product_id").not(currentDropdown).find('option[value=' + selectedValue + ']').prop('disabled', true);
             }
 
-            console.log("called");
             // get the closest ancestor form-group 
             var formGroup = $(this).closest('.form-group');
             // then find the quantity within that form-group
@@ -23,33 +21,45 @@ $(document).ready(function() {
             var quantity = quantityField.val();
             updateMaxQuantity($(this), quantity);
         });
+        updateSubmitButton(); // Update on page load
     }
     const updateMaxQuantity = (productDropdown, quantity) => {
-        console.log(quantity);
         const product_id = productDropdown.val();
-        const baseUrl = window.location.protocol + "//" + window.location.host + "/updated_cms"
+        const baseUrl = window.location.protocol + "//" + window.location.host + "/fahim-onboarding"
 
-        console.log('Product ID:', product_id);
-        console.log('Invoice ID:', invoiceid);
-
-        let request1 = $.ajax({
-            url: `${baseUrl}/invoices/get_quantity/${product_id}`,
-            type: "get",
-        });
+        if(invoiceid){    
+            let request1 = $.ajax({
+                url: `${baseUrl}/invoices/get_quantity/${product_id}`,
+                type: "get",
+            });
+        
+            let request2 = $.ajax({
+                url: `${baseUrl}/invoices/getInvoicedQuantity/${product_id}/${invoiceid}`,
+                type: "get",
+            });
+            if(parseInt(product_id) && parseInt(invoiceid)){
+                // AJAX request for editing invoice
+                $.when(request1, request2).done(function(response1, response2) {
+                    // response1 and response2 contain the responses from each ajax request
+                    let stock = parseInt(response1[0]);
+                    let quantity = parseInt(response2[0]);
     
-        let request2 = $.ajax({
-            url: `${baseUrl}/invoices/getInvoicedQuantity/${product_id}/${invoiceid}`,
-            type: "get",
-        });
-        if(product_id && invoiceid){
-            // Use jQuery's when method to run code after both requests have completed
-            $.when(request1, request2).done(function(response1, response2) {
-                // response1 and response2 contain the responses from each ajax request
-                let stock = parseInt(response1[0]);
-                let quantity = parseInt(response2[0]);
-
-                productDropdown.closest('.form-group').find('.product_quantity').attr('max', parseInt(stock) + parseInt(quantity));
-
+                    productDropdown.closest('.form-group').find('.product_quantity').attr('max', parseInt(stock) + parseInt(quantity));
+    
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+                    // Handle or report the error here
+                    console.log('An error occurred: ' + errorThrown);
+                });
+            }
+        }else if(product_id){    
+            // AJAX request for new invoice
+            $.ajax({
+                url: `${baseUrl}/invoices/get_quantity/${product_id}`,
+                type: "get",
+                success: function(response) {
+                    productDropdown.closest('.form-group').find('.product_quantity').attr('max', response);
+                    updateSubmitButton();
+                },
             });
         }
     };
@@ -67,11 +77,9 @@ $(document).ready(function() {
         }
 
         if (quantity > maxQuantity) {
-            console.log("Here goes wrong");
             formGroup.find('.quantity_warning').show();
             return false;
         } else {
-            console.log("Here goes right");
             formGroup.find('.quantity_warning').hide();
             return true;
         }
@@ -79,32 +87,39 @@ $(document).ready(function() {
 
     const updateSubmitButton = () => {
         // Iterate over each input with the class .product_quantity
-        let iii = 0;
         let valid = true;
+        let index_tracker2 = 0;
+        let lengthofdivs = 0;
+        console.log("Called");
         $('.product_quantity').each(function() {
-            if(iii==0){
-                iii++;
+            console.log(".product_quantity:", $(this));
+            lengthofdivs++;
+
+            if(index_tracker2==0){
+                index_tracker2++;
             }else{
                 let value = $(this).val();
                 let maxvalue = $(this).attr('max');
 
-                if(value == 0 ){
+                if(value == 0 || value == undefined || value == null || value == ""){
                     valid = false;
-                    return;
                 }
                 if(parseInt(value)>parseInt(maxvalue)){
                     valid = false;
-                    console.log("making it wrong");
                 }
             }
         });
+        if(lengthofdivs == 1){
+            valid = false;
+        }
+
         let index_tracker = 0;
         $('.product_id').each(function(i, obj) {
+            console.log(".product_id:", $(this).val());
             if(index_tracker==0){
                 index_tracker++;
             }else{
-                if($(this).val() === ''){
-                    console.log("wrong");
+                if($(this).val() === '' || $(this).val() == null || $(this).val() == undefined){
                     valid = false;
                 }
             }
@@ -114,13 +129,12 @@ $(document).ready(function() {
     refreshProductOptions();
     // when 'Add More Products' button is clicked
     $("#add_more_products").click(function() {
-        console.log("adding more product");
-        updateSubmitButton(); // Update on page load
-        var $template = $("#product-template").clone().attr('id', 'product-section').show();
         //var $template = $("#product-template").clone().removeAttr('id').show(); // Clone the template and remove its id
+        var $template = $("#product-template").clone().attr('id', 'product-section').show();
         $("#product-container").append($template); // Append the cloned template to the product section
 
         refreshProductOptions(); // refresh the product options
+        updateSubmitButton(); // Update on page load
     });
 
 
@@ -128,19 +142,18 @@ $(document).ready(function() {
     $(document).on('click', '.remove-product', function() {
         $(this).parent().remove(); // Remove the parent product section of the clicked remove button
         refreshProductOptions(); // Call to refresh product options, to ensure consistency
+        updateSubmitButton(); 
     });
 
     updateSubmitButton(); // Update on page load
     // Call refreshProductOptions when the product changes
     $(document).on("change", ".product_id", function() {
-        console.log("called");
         // get the closest ancestor form-group 
         var formGroup = $(this).closest('.form-group');
         // then find the quantity within that form-group
         var quantityField = formGroup.find('.product_quantity');
         // get the value of the quantity field
         var quantity = quantityField.val();
-        console.log(quantity);
         updateMaxQuantity($(this), quantity);
         refreshProductOptions();
         updateSubmitButton(); // Update on page load
