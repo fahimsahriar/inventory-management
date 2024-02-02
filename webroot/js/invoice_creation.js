@@ -25,9 +25,9 @@ $(document).ready(function() {
     }
     const updateMaxQuantity = (productDropdown, quantity) => {
         const product_id = productDropdown.val();
-        const baseUrl = window.location.protocol + "//" + window.location.host + "/fahim-onboarding"
+        const baseUrl = window.location.protocol + "//" + window.location.host + "/updated_cms"
 
-        if(invoiceid){    
+        if(invoiceid && product_id!= null && product_id!= ''){    
             let request1 = $.ajax({
                 url: `${baseUrl}/invoices/get_quantity/${product_id}`,
                 type: "get",
@@ -90,11 +90,8 @@ $(document).ready(function() {
         let valid = true;
         let index_tracker2 = 0;
         let lengthofdivs = 0;
-        console.log("Called");
         $('.product_quantity').each(function() {
-            console.log(".product_quantity:", $(this));
             lengthofdivs++;
-
             if(index_tracker2==0){
                 index_tracker2++;
             }else{
