@@ -95,8 +95,8 @@ return [
             'host' => 'ssl://smtp.gmail.com',
             'port' => 465,
             'timeout' => 30,
-            'username' => 'fahim.sahriar@sjinnovation.com',
-            'password' => 'rzE0ZEHs7lVm3@5i>tT0#hwh/L\#49OK6V7',
+            'username' => 'myemail',
+            'password' => 'password',
             'ssl' => true,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
         ]
